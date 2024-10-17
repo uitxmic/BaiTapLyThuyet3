@@ -1,0 +1,64 @@
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.exe
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.deps.json
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.runtimeconfig.json
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.dll
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.pdb
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.Properties.Resources.resources
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.GenerateResource.cache
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.AssemblyInfoInputs.cache
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.AssemblyInfo.cs
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.CoreCompileInputs.cache
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.dll
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\refint\FormLogIn.dll
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.pdb
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.genruntimeconfig.cache
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\ref\FormLogIn.dll
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormLogin.resources
+D:\Tài liệu UIT\Tài liệu kỳ 3\Lập trình mạng căn bản\Tài liệu thực hành\FormLogIn\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormSignUp.resources
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.exe
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.deps.json
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.runtimeconfig.json
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\FormLogIn.pdb
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormLogin.resources
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormSignUp.resources
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.Properties.Resources.resources
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.GenerateResource.cache
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.GeneratedMSBuildEditorConfig.editorconfig
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.AssemblyInfoInputs.cache
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.AssemblyInfo.cs
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.CoreCompileInputs.cache
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.sourcelink.json
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.dll
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\refint\FormLogIn.dll
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.pdb
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.genruntimeconfig.cache
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\ref\FormLogIn.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.AssemblyReference.cache
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.csproj.Up2Date
+D:\FormLogin\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormUserInfo.resources
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Devart.Data.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Devart.Data.Linq.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Devart.Data.MySql.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Devart.Data.MySql.Linq.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.Design.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+D:\FormLogin\FormLogIn\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
