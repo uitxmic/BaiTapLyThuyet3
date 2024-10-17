@@ -31,6 +31,7 @@ namespace FormLogIn
         {
             textBox_Username = new TextBox();
             textBox_Email = new TextBox();
+            button_Close = new Button();
             SuspendLayout();
             // 
             // textBox_Username
@@ -57,16 +58,27 @@ namespace FormLogIn
             textBox_Email.TabIndex = 3;
             textBox_Email.TextChanged += textBox_Email_TextChanged;
             // 
+            // button_Close
+            // 
+            button_Close.Location = new Point(559, 440);
+            button_Close.Name = "button_Close";
+            button_Close.Size = new Size(171, 52);
+            button_Close.TabIndex = 6;
+            button_Close.Text = "Sign out";
+            button_Close.UseVisualStyleBackColor = true;
+            button_Close.Click += button_Close_Click;
+            // 
             // FormUserInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources._3;
             ClientSize = new Size(1296, 577);
+            Controls.Add(button_Close);
             Controls.Add(textBox_Email);
             Controls.Add(textBox_Username);
             Name = "FormUserInfo";
-            Text = "Form1";
+            Text = "UserInfo";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -74,5 +86,6 @@ namespace FormLogIn
         #endregion
         private TextBox textBox_Username;
         private TextBox textBox_Email;
+        private Button button_Close;
     }
 }

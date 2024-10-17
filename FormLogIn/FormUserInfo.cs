@@ -15,7 +15,7 @@ namespace FormLogIn
     public partial class FormUserInfo : Form
     {
         private int _userId;
-        string connectionString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=LTHT_USER;Integrated Security=True";
+        string connectionString = @"Data Source=HACKER_LORD;Initial Catalog=LTHT_USER;Integrated Security=True";
         public FormUserInfo(int userId)
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace FormLogIn
         private void LoadUserInfo()
         {
             string queryUserName = "SELECT UserName, Email FROM USERS WHERE UserId = @userid";
-           // LinQ 
+            // LinQ 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -35,7 +35,7 @@ namespace FormLogIn
                     using (SqlCommand cmd = new SqlCommand(queryUserName, conn))
                     {
                         cmd.Parameters.AddWithValue("@userid", _userId);
-                        
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -54,12 +54,17 @@ namespace FormLogIn
         }
         private void textBox_Username_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox_Email_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

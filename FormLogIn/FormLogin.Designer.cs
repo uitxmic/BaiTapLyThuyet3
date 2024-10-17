@@ -142,7 +142,7 @@
             Controls.Add(label_TieuDe);
             ForeColor = SystemColors.ActiveCaptionText;
             Name = "FormLogin";
-            Text = "Form1";
+            Text = "Login";
             Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();

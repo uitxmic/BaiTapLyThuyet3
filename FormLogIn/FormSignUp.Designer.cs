@@ -51,7 +51,6 @@
             label_TieuDe2.Size = new Size(184, 28);
             label_TieuDe2.TabIndex = 1;
             label_TieuDe2.Text = "to continue with app";
-            label_TieuDe2.Click += label_TieuDe2_Click;
             // 
             // textBox_ConfirmPassword
             // 
@@ -63,7 +62,6 @@
             textBox_ConfirmPassword.PlaceholderText = "Confirm Password";
             textBox_ConfirmPassword.Size = new Size(248, 20);
             textBox_ConfirmPassword.TabIndex = 6;
-            textBox_ConfirmPassword.TextChanged += textBox_ConfirmPassword_TextChanged;
             // 
             // textBox_Password
             // 
@@ -75,7 +73,6 @@
             textBox_Password.PlaceholderText = "Password";
             textBox_Password.Size = new Size(248, 20);
             textBox_Password.TabIndex = 7;
-            textBox_Password.TextChanged += textBox_Password_TextChanged;
             // 
             // textBox_Name
             // 
@@ -87,7 +84,6 @@
             textBox_Name.PlaceholderText = "Username";
             textBox_Name.Size = new Size(248, 20);
             textBox_Name.TabIndex = 8;
-            textBox_Name.TextChanged += textBox_Name_TextChanged;
             // 
             // textBox_Email
             // 
@@ -99,7 +95,6 @@
             textBox_Email.PlaceholderText = "Your Email";
             textBox_Email.Size = new Size(248, 20);
             textBox_Email.TabIndex = 9;
-            textBox_Email.TextChanged += textBox_Email_TextChanged;
             // 
             // button_SignUp
             // 
@@ -160,7 +155,7 @@
             Controls.Add(textBox_ConfirmPassword);
             Controls.Add(label_TieuDe2);
             Name = "FormSignUp";
-            Text = "FormSignUp";
+            Text = "SignUp";
             ResumeLayout(false);
             PerformLayout();
         }
