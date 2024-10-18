@@ -34,6 +34,7 @@ namespace FormLogIn
             textBox_Email = new TextBox();
             button_Close = new Button();
             textBox_Birthday = new TextBox();
+            textBox_Fullname = new TextBox();
             SuspendLayout();
             // 
             // textBox_Username
@@ -53,7 +54,7 @@ namespace FormLogIn
             textBox_Email.BackColor = SystemColors.MenuText;
             textBox_Email.BorderStyle = BorderStyle.None;
             textBox_Email.ForeColor = SystemColors.Window;
-            textBox_Email.Location = new Point(519, 448);
+            textBox_Email.Location = new Point(519, 525);
             textBox_Email.Name = "textBox_Email";
             textBox_Email.ReadOnly = true;
             textBox_Email.Size = new Size(236, 20);
@@ -62,7 +63,7 @@ namespace FormLogIn
             // 
             // button_Close
             // 
-            button_Close.Location = new Point(559, 490);
+            button_Close.Location = new Point(547, 577);
             button_Close.Name = "button_Close";
             button_Close.Size = new Size(171, 52);
             button_Close.TabIndex = 6;
@@ -75,11 +76,22 @@ namespace FormLogIn
             textBox_Birthday.BackColor = SystemColors.MenuText;
             textBox_Birthday.BorderStyle = BorderStyle.None;
             textBox_Birthday.ForeColor = SystemColors.Window;
-            textBox_Birthday.Location = new Point(519, 357);
+            textBox_Birthday.Location = new Point(519, 435);
             textBox_Birthday.Name = "textBox_Birthday";
             textBox_Birthday.ReadOnly = true;
             textBox_Birthday.Size = new Size(236, 20);
             textBox_Birthday.TabIndex = 7;
+            // 
+            // textBox_Fullname
+            // 
+            textBox_Fullname.BackColor = SystemColors.MenuText;
+            textBox_Fullname.BorderStyle = BorderStyle.None;
+            textBox_Fullname.ForeColor = SystemColors.Window;
+            textBox_Fullname.Location = new Point(519, 359);
+            textBox_Fullname.Name = "textBox_Fullname";
+            textBox_Fullname.ReadOnly = true;
+            textBox_Fullname.Size = new Size(236, 20);
+            textBox_Fullname.TabIndex = 8;
             // 
             // FormUserInfo
             // 
@@ -87,6 +99,7 @@ namespace FormLogIn
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1296, 660);
+            Controls.Add(textBox_Fullname);
             Controls.Add(textBox_Birthday);
             Controls.Add(button_Close);
             Controls.Add(textBox_Email);
@@ -102,5 +115,6 @@ namespace FormLogIn
         private TextBox textBox_Email;
         private Button button_Close;
         private TextBox textBox_Birthday;
+        private TextBox textBox_Fullname;
     }
 }

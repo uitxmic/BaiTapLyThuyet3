@@ -39,6 +39,7 @@
             label1 = new Label();
             checkBox_Pass = new CheckBox();
             textBox_Birthday = new TextBox();
+            textBox_FullName = new TextBox();
             SuspendLayout();
             // 
             // label_TieuDe2
@@ -58,7 +59,7 @@
             textBox_ConfirmPassword.BackColor = SystemColors.MenuText;
             textBox_ConfirmPassword.BorderStyle = BorderStyle.None;
             textBox_ConfirmPassword.ForeColor = SystemColors.Window;
-            textBox_ConfirmPassword.Location = new Point(515, 686);
+            textBox_ConfirmPassword.Location = new Point(752, 489);
             textBox_ConfirmPassword.Name = "textBox_ConfirmPassword";
             textBox_ConfirmPassword.PlaceholderText = "Confirm Password";
             textBox_ConfirmPassword.Size = new Size(248, 20);
@@ -69,7 +70,7 @@
             textBox_Password.BackColor = SystemColors.MenuText;
             textBox_Password.BorderStyle = BorderStyle.None;
             textBox_Password.ForeColor = SystemColors.Window;
-            textBox_Password.Location = new Point(515, 581);
+            textBox_Password.Location = new Point(752, 389);
             textBox_Password.Name = "textBox_Password";
             textBox_Password.PlaceholderText = "Password";
             textBox_Password.Size = new Size(248, 20);
@@ -80,7 +81,7 @@
             textBox_Name.BackColor = SystemColors.MenuText;
             textBox_Name.BorderStyle = BorderStyle.None;
             textBox_Name.ForeColor = SystemColors.Window;
-            textBox_Name.Location = new Point(515, 309);
+            textBox_Name.Location = new Point(242, 309);
             textBox_Name.Name = "textBox_Name";
             textBox_Name.PlaceholderText = "Username";
             textBox_Name.Size = new Size(248, 20);
@@ -91,7 +92,7 @@
             textBox_Email.BackColor = SystemColors.MenuText;
             textBox_Email.BorderStyle = BorderStyle.None;
             textBox_Email.ForeColor = SystemColors.Window;
-            textBox_Email.Location = new Point(515, 400);
+            textBox_Email.Location = new Point(752, 304);
             textBox_Email.Name = "textBox_Email";
             textBox_Email.PlaceholderText = "Your Email";
             textBox_Email.Size = new Size(248, 20);
@@ -123,7 +124,7 @@
             label1.BackColor = SystemColors.ActiveCaptionText;
             label1.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(782, 369);
+            label1.Location = new Point(1024, 363);
             label1.Name = "label1";
             label1.Size = new Size(150, 28);
             label1.TabIndex = 12;
@@ -133,7 +134,7 @@
             // 
             checkBox_Pass.AutoSize = true;
             checkBox_Pass.BackColor = SystemColors.Desktop;
-            checkBox_Pass.Location = new Point(794, 414);
+            checkBox_Pass.Location = new Point(1036, 408);
             checkBox_Pass.Name = "checkBox_Pass";
             checkBox_Pass.Size = new Size(18, 17);
             checkBox_Pass.TabIndex = 13;
@@ -145,11 +146,22 @@
             textBox_Birthday.BackColor = SystemColors.MenuText;
             textBox_Birthday.BorderStyle = BorderStyle.None;
             textBox_Birthday.ForeColor = SystemColors.Window;
-            textBox_Birthday.Location = new Point(515, 491);
+            textBox_Birthday.Location = new Point(242, 489);
             textBox_Birthday.Name = "textBox_Birthday";
             textBox_Birthday.PlaceholderText = "Your Birthday";
             textBox_Birthday.Size = new Size(248, 20);
             textBox_Birthday.TabIndex = 14;
+            // 
+            // textBox_FullName
+            // 
+            textBox_FullName.BackColor = SystemColors.MenuText;
+            textBox_FullName.BorderStyle = BorderStyle.None;
+            textBox_FullName.ForeColor = SystemColors.Window;
+            textBox_FullName.Location = new Point(245, 399);
+            textBox_FullName.Name = "textBox_FullName";
+            textBox_FullName.PlaceholderText = "Your Fullname";
+            textBox_FullName.Size = new Size(248, 20);
+            textBox_FullName.TabIndex = 15;
             // 
             // FormSignUp
             // 
@@ -157,6 +169,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1302, 828);
+            Controls.Add(textBox_FullName);
             Controls.Add(textBox_Birthday);
             Controls.Add(checkBox_Pass);
             Controls.Add(label1);
@@ -184,5 +197,6 @@
         private Label label1;
         private CheckBox checkBox_Pass;
         private TextBox textBox_Birthday;
+        private TextBox textBox_FullName;
     }
 }

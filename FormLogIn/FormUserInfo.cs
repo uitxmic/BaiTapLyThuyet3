@@ -42,6 +42,7 @@ namespace FormLogIn
                             {
                                 textBox_Username.Text = reader["UserName"].ToString();
                                 textBox_Email.Text = reader["Email"].ToString();
+                                textBox_Fullname.Text = reader["FullName"].ToString();
                                 DateTime birthday = (DateTime)reader["BirthDay"];
                                 textBox_Birthday.Text = birthday.ToString("yyyy-MM-dd");
                             }

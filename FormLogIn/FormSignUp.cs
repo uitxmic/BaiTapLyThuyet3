@@ -16,7 +16,7 @@ namespace FormLogIn
     public partial class FormSignUp : Form
     {
         string connectionString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay) VALUES (@UserName, @PassWord, @Email, @Birthday)";
+        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
         public FormSignUp()
         {
             InitializeComponent();
@@ -59,6 +59,15 @@ namespace FormLogIn
             }
         }
 
+        private void ClearTextBox()
+        {
+            textBox_Email.Clear();
+            textBox_Password.Clear();
+            textBox_Name.Clear();
+            textBox_ConfirmPassword.Clear();
+            textBox_FullName.Clear();
+            textBox_Birthday.Clear();
+        }
         private void button_SignUp_Click(object sender, EventArgs e)
         {
             if (!IsValid(textBox_Email.Text))
@@ -70,7 +79,8 @@ namespace FormLogIn
                 string.IsNullOrWhiteSpace(textBox_Password.Text) ||
                 string.IsNullOrWhiteSpace(textBox_Email.Text) ||
                 string.IsNullOrWhiteSpace(textBox_ConfirmPassword.Text) ||
-                string.IsNullOrWhiteSpace(textBox_Birthday.Text))
+                string.IsNullOrWhiteSpace(textBox_Birthday.Text) ||
+                string.IsNullOrWhiteSpace(textBox_FullName.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return;
@@ -102,23 +112,18 @@ namespace FormLogIn
                         cmd.Parameters.AddWithValue("PassWord", hashedPassWord);
                         cmd.Parameters.AddWithValue("Email", textBox_Email.Text);
                         cmd.Parameters.AddWithValue("@Birthday", birthday.Date);
+                        cmd.Parameters.AddWithValue("@FullName", textBox_FullName.Text);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Sign up sucessfully");
-                            textBox_Email.Clear();
-                            textBox_Password.Clear();
-                            textBox_Name.Clear();
-                            textBox_ConfirmPassword.Clear();
+                            ClearTextBox();
                         }
                         else
                         {
                             MessageBox.Show("Error Occur. Try Again");
-                            textBox_Email.Clear();
-                            textBox_Password.Clear();
-                            textBox_Name.Clear();
-                            textBox_ConfirmPassword.Clear();
+                            ClearTextBox();
                         }
                     }
                     conn.Close();
