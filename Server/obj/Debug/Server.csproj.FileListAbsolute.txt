@@ -1,0 +1,10 @@
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.FormSever.resources
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.Properties.Resources.resources
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.GenerateResource.cache
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\bin\Debug\Server.exe.config
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\bin\Debug\Server.exe
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\bin\Debug\Server.pdb
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.exe
+D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb
