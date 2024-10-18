@@ -2,22 +2,16 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Security.Cryptography;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace FormLogIn
 {
     public partial class FormLogin : Form
     {
-        string ConnectString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
+        string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
         string query = "SELECT PassWord FROM USERS WHERE UserName = @username";
-        SqlConnection con;
-        SqlCommand cmd;
-        SqlDataAdapter adapter;
-        DataTable dt;
         public FormLogin()
         {
             InitializeComponent();
-            //textBox_TenDangNhap.Text = "Your Email";
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -120,25 +114,6 @@ namespace FormLogIn
         {
             FormSignUp formSignUp = new FormSignUp();
             formSignUp.ShowDialog();
-        }
-        private void ConnectToDatabase()
-        {
-            string connectionString = "Server=localhost;Database=LTHT_USER;UserId = myuser; Password = mypassword; ";
-                 using (SqlConnection connection = new
-                SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    MessageBox.Show("Connect Successful!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
         }
         
     }
