@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hKa3ix8xIzU=",
+  "dgSpecHash": "RHJTaH2R1W8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\FormLogIn.csproj",
+  "projectFilePath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vobao\\.nuget\\packages\\devart.data\\6.0.21\\devart.data.6.0.21.nupkg.sha512",
     "C:\\Users\\vobao\\.nuget\\packages\\devart.data.linq\\5.1.21\\devart.data.linq.5.1.21.nupkg.sha512",

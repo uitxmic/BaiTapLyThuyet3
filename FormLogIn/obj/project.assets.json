@@ -6298,9 +6298,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\FormLogIn.csproj",
-      "projectName": "FormLogIn",
-      "projectPath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\FormLogIn.csproj",
+      "projectUniqueName": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "projectName": "Client",
+      "projectPath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
       "packagesPath": "C:\\Users\\vobao\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
       "projectStyle": "PackageReference",
