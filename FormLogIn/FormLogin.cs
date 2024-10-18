@@ -8,7 +8,7 @@ namespace FormLogIn
 {
     public partial class FormLogin : Form
     {
-        string ConnectString = @"Data Source=HACKER_LORD;Initial Catalog=LTHT_USER;Integrated Security=True";
+        string ConnectString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
         string query = "SELECT PassWord FROM USERS WHERE UserName = @username";
         SqlConnection con;
         SqlCommand cmd;

@@ -15,7 +15,7 @@ namespace FormLogIn
     public partial class FormUserInfo : Form
     {
         private int _userId;
-        string connectionString = @"Data Source=HACKER_LORD;Initial Catalog=LTHT_USER;Integrated Security=True";
+        string connectionString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
         public FormUserInfo(int userId)
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace FormLogIn
         }
         private void LoadUserInfo()
         {
-            string queryUserName = "SELECT UserName, Email FROM USERS WHERE UserId = @userid";
+            string queryUserName = "SELECT * FROM USERS WHERE UserId = @userid";
             // LinQ 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -42,6 +42,8 @@ namespace FormLogIn
                             {
                                 textBox_Username.Text = reader["UserName"].ToString();
                                 textBox_Email.Text = reader["Email"].ToString();
+                                DateTime birthday = (DateTime)reader["BirthDay"];
+                                textBox_Birthday.Text = birthday.ToString("yyyy-MM-dd");
                             }
                         }
                     }

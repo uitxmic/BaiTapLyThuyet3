@@ -38,6 +38,7 @@
             button_Login = new Button();
             label1 = new Label();
             checkBox_Pass = new CheckBox();
+            textBox_Birthday = new TextBox();
             SuspendLayout();
             // 
             // label_TieuDe2
@@ -57,7 +58,7 @@
             textBox_ConfirmPassword.BackColor = SystemColors.MenuText;
             textBox_ConfirmPassword.BorderStyle = BorderStyle.None;
             textBox_ConfirmPassword.ForeColor = SystemColors.Window;
-            textBox_ConfirmPassword.Location = new Point(515, 592);
+            textBox_ConfirmPassword.Location = new Point(515, 686);
             textBox_ConfirmPassword.Name = "textBox_ConfirmPassword";
             textBox_ConfirmPassword.PlaceholderText = "Confirm Password";
             textBox_ConfirmPassword.Size = new Size(248, 20);
@@ -68,7 +69,7 @@
             textBox_Password.BackColor = SystemColors.MenuText;
             textBox_Password.BorderStyle = BorderStyle.None;
             textBox_Password.ForeColor = SystemColors.Window;
-            textBox_Password.Location = new Point(515, 490);
+            textBox_Password.Location = new Point(515, 581);
             textBox_Password.Name = "textBox_Password";
             textBox_Password.PlaceholderText = "Password";
             textBox_Password.Size = new Size(248, 20);
@@ -98,7 +99,7 @@
             // 
             // button_SignUp
             // 
-            button_SignUp.Location = new Point(552, 714);
+            button_SignUp.Location = new Point(552, 741);
             button_SignUp.Name = "button_SignUp";
             button_SignUp.Size = new Size(176, 45);
             button_SignUp.TabIndex = 10;
@@ -122,7 +123,7 @@
             label1.BackColor = SystemColors.ActiveCaptionText;
             label1.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(780, 445);
+            label1.Location = new Point(782, 369);
             label1.Name = "label1";
             label1.Size = new Size(150, 28);
             label1.TabIndex = 12;
@@ -132,19 +133,31 @@
             // 
             checkBox_Pass.AutoSize = true;
             checkBox_Pass.BackColor = SystemColors.Desktop;
-            checkBox_Pass.Location = new Point(792, 490);
+            checkBox_Pass.Location = new Point(794, 414);
             checkBox_Pass.Name = "checkBox_Pass";
             checkBox_Pass.Size = new Size(18, 17);
             checkBox_Pass.TabIndex = 13;
             checkBox_Pass.UseVisualStyleBackColor = false;
             checkBox_Pass.CheckedChanged += checkBox_Pass_CheckedChanged;
             // 
+            // textBox_Birthday
+            // 
+            textBox_Birthday.BackColor = SystemColors.MenuText;
+            textBox_Birthday.BorderStyle = BorderStyle.None;
+            textBox_Birthday.ForeColor = SystemColors.Window;
+            textBox_Birthday.Location = new Point(515, 491);
+            textBox_Birthday.Name = "textBox_Birthday";
+            textBox_Birthday.PlaceholderText = "Your Birthday";
+            textBox_Birthday.Size = new Size(248, 20);
+            textBox_Birthday.TabIndex = 14;
+            // 
             // FormSignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1302, 792);
+            ClientSize = new Size(1302, 828);
+            Controls.Add(textBox_Birthday);
             Controls.Add(checkBox_Pass);
             Controls.Add(label1);
             Controls.Add(button_Login);
@@ -170,5 +183,6 @@
         private Button button_Login;
         private Label label1;
         private CheckBox checkBox_Pass;
+        private TextBox textBox_Birthday;
     }
 }

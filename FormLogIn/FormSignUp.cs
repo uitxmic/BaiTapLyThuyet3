@@ -15,8 +15,8 @@ namespace FormLogIn
 {
     public partial class FormSignUp : Form
     {
-        string connectionString = @"Data Source=HACKER_LORD;Initial Catalog=LTHT_USER;Integrated Security=True";
-        string query = "INSERT INTO USERS (UserName, PassWord, Email) VALUES (@UserName, @PassWord, @Email)";
+        string connectionString = @"Data Source=DESKTOP-R273SF4;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
+        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay) VALUES (@UserName, @PassWord, @Email, @Birthday)";
         public FormSignUp()
         {
             InitializeComponent();
@@ -69,7 +69,8 @@ namespace FormLogIn
             if (string.IsNullOrWhiteSpace(textBox_Name.Text) ||
                 string.IsNullOrWhiteSpace(textBox_Password.Text) ||
                 string.IsNullOrWhiteSpace(textBox_Email.Text) ||
-                string.IsNullOrWhiteSpace(textBox_ConfirmPassword.Text))
+                string.IsNullOrWhiteSpace(textBox_ConfirmPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBox_Birthday.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
                 return;
@@ -91,9 +92,16 @@ namespace FormLogIn
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        DateTime birthday;
+                        if (!DateTime.TryParse(textBox_Birthday.Text, out birthday))
+                        {
+                            MessageBox.Show("Invalid date format. Please enter a valid date.");
+                            return;
+                        }
                         cmd.Parameters.AddWithValue("UserName", textBox_Name.Text.Trim());
                         cmd.Parameters.AddWithValue("PassWord", hashedPassWord);
                         cmd.Parameters.AddWithValue("Email", textBox_Email.Text);
+                        cmd.Parameters.AddWithValue("@Birthday", birthday.Date);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
@@ -107,6 +115,10 @@ namespace FormLogIn
                         else
                         {
                             MessageBox.Show("Error Occur. Try Again");
+                            textBox_Email.Clear();
+                            textBox_Password.Clear();
+                            textBox_Name.Clear();
+                            textBox_ConfirmPassword.Clear();
                         }
                     }
                     conn.Close();
