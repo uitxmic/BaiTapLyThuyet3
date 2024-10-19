@@ -20,17 +20,24 @@ namespace FormLogIn
         }
         private void InitializeSocket()
         {
-            client = new TcpClient("127.0.0.1", 5555);
-            stream = client.GetStream();
-            MessageBox.Show("Connected to server...");
-            string request = "LOGIN user@example.com password123";
-            byte[] requestData = Encoding.ASCII.GetBytes(request);
-            stream.Write(requestData, 0, requestData.Length);
-            byte[] buffer = new byte[1024];
-            int byteCount = stream.Read(buffer, 0, buffer.Length);
-            string response = Encoding.ASCII.GetString(buffer, 0, byteCount);
-            MessageBox.Show("Server response: " + response);
-            client.Close();
+            try
+            {
+                client = new TcpClient("127.0.0.1", 5555);
+                stream = client.GetStream();
+                MessageBox.Show("Connected to server...");
+                string request = "LOGIN user@example.com password123";
+                byte[] requestData = Encoding.ASCII.GetBytes(request);
+                stream.Write(requestData, 0, requestData.Length);
+                byte[] buffer = new byte[1024];
+                int byteCount = stream.Read(buffer, 0, buffer.Length);
+                string response = Encoding.ASCII.GetString(buffer, 0, byteCount);
+                MessageBox.Show("Server response: " + response);
+                client.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void checkBox_RevealPass_CheckedChanged(object sender, EventArgs e)
         {

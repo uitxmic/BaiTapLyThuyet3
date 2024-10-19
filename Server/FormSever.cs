@@ -28,34 +28,48 @@ namespace Server
         }
         private static void InitializeSocket()
         {
-            listener = new TcpListener(IPAddress.Any, 5555);
-            listener.Start();
-            MessageBox.Show("Server started...");
-            while (true)
+            try
             {
-                TcpClient client = listener.AcceptTcpClient();
-                clients.Add(client);
-                MessageBox.Show("New client connected...");
-                Thread clientThread = new Thread(() => HandleClient(client));
-                clientThread.Start();
+                listener = new TcpListener(IPAddress.Any, 5555);
+                listener.Start();
+                MessageBox.Show("Server started...");
+                while (true)
+                {
+                    TcpClient client = listener.AcceptTcpClient();
+                    clients.Add(client);
+                    MessageBox.Show("New client connected...");
+                    Thread clientThread = new Thread(() => HandleClient(client));
+                    clientThread.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
         private static void HandleClient(TcpClient client)
         {
-            NetworkStream stream = client.GetStream();
-            byte[] buffer = new byte[1024];
-            int byteCount;
-
-            while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
+            try
             {
-                string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
-                MessageBox.Show("Received: " + request);
-                string response = HandleRequest(request);
-                byte[] responseData = Encoding.ASCII.GetBytes(response);
-                stream.Write(responseData, 0, responseData.Length);
+                NetworkStream stream = client.GetStream();
+                byte[] buffer = new byte[1024];
+                int byteCount;
+
+                while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
+                    MessageBox.Show("Received: " + request);
+                    string response = HandleRequest(request);
+                    byte[] responseData = Encoding.ASCII.GetBytes(response);
+                    stream.Write(responseData, 0, responseData.Length);
+                }
+                clients.Remove(client);
+                client.Close();
             }
-            clients.Remove(client);
-            client.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private static string HandleRequest(string request)
         {
