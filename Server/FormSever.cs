@@ -23,20 +23,20 @@ namespace Server
 
         private void Show_Database()
         {
-            dataGridView1.Rows.Clear();
             using (SqlConnection conn = new SqlConnection(ConnectString))
             {
-                conn.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("SELECT * from USERS", conn);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                dataGridView1.DataSource = dt;
-                dataGridView1.AllowUserToAddRows = false;
+                try
+                {
+                    conn.Open();
+                    SqlDataAdapter sda = new SqlDataAdapter("SELECT * from USERS", conn);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    dataGridView1.AllowUserToAddRows = false;
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
-
-
-
         private void Show_database_Click(object sender, EventArgs e)
         {
             Show_Database();
@@ -64,9 +64,7 @@ namespace Server
                         MessageBox.Show("Successfully deleted.");
                     }
                 }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
     }

@@ -24,7 +24,6 @@ namespace FormLogIn
             textBox_Password.UseSystemPasswordChar = true;
             textBox_ConfirmPassword.UseSystemPasswordChar = true;
         }
-
         private static bool IsValid(string email)
         {
             string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
@@ -43,20 +42,23 @@ namespace FormLogIn
                 textBox_ConfirmPassword.UseSystemPasswordChar = true;
             }
         }
-
         private bool IsUserNameExists(string userName)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                string checkQuery = "SELECT COUNT(1) FROM USERS WHERE UserName = @UserName";
-                using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("UserName", userName);
-                    conn.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    return count > 0;
+                    string checkQuery = "SELECT COUNT(1) FROM USERS WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("UserName", userName);
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
                 }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
         private string ComputeSha256Hash(string rawData)
         {
@@ -72,7 +74,6 @@ namespace FormLogIn
                 return sb.ToString();
             }
         }
-
         private void ClearTextBox()
         {
             textBox_Email.Clear();
@@ -84,58 +85,56 @@ namespace FormLogIn
         }
         private void button_SignUp_Click(object sender, EventArgs e)
         {
-            
-
-            string hashedPassWord = ComputeSha256Hash(textBox_Password.Text);
-            string ComparePass = ComputeSha256Hash(textBox_ConfirmPassword.Text);
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            if (string.IsNullOrWhiteSpace(textBox_Name.Text) ||
+                string.IsNullOrWhiteSpace(textBox_Password.Text) ||
+                string.IsNullOrWhiteSpace(textBox_Email.Text) ||
+                string.IsNullOrWhiteSpace(textBox_ConfirmPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBox_Birthday.Text) ||
+                string.IsNullOrWhiteSpace(textBox_FullName.Text))
             {
-                try
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            if (IsUserNameExists(textBox_Name.Text))
+            {
+                MessageBox.Show("Username đã tồn tại. Vui lòng chọn username khác.");
+                return;
+            }
+
+            if (!IsValid(textBox_Email.Text))
+            {
+                MessageBox.Show("Your email is invalid");
+                return;
+            }
+
+            DateTime birthday;
+            if (!DateTime.TryParse(textBox_Birthday.Text, out birthday))
+            {
+                MessageBox.Show("Invalid date format. Please enter a valid date.");
+                return;
+            }
+
+            if (textBox_Password.Text != textBox_ConfirmPassword.Text)
+            {
+                MessageBox.Show("Your Password is not match!");
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
+                    string hashedPassWord = ComputeSha256Hash(textBox_Password.Text);
+                    string ComparePass = ComputeSha256Hash(textBox_ConfirmPassword.Text);
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        if (!IsValid(textBox_Email.Text))
-                        {
-                            MessageBox.Show("Your email is invalid");
-                            return;
-                        }
-                        if (string.IsNullOrWhiteSpace(textBox_Name.Text) ||
-                            string.IsNullOrWhiteSpace(textBox_Password.Text) ||
-                            string.IsNullOrWhiteSpace(textBox_Email.Text) ||
-                            string.IsNullOrWhiteSpace(textBox_ConfirmPassword.Text) ||
-                            string.IsNullOrWhiteSpace(textBox_Birthday.Text) ||
-                            string.IsNullOrWhiteSpace(textBox_FullName.Text))
-                        {
-                            MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
-                            return;
-                        }
-
-                        if (textBox_Password.Text != textBox_ConfirmPassword.Text)
-                        {
-                            MessageBox.Show("Your Password is not match!");
-                            return;
-                        }
-
-                        if (IsUserNameExists(textBox_Name.Text))
-                        {
-                            MessageBox.Show("Username đã tồn tại. Vui lòng chọn username khác.");
-                            return;
-                        }
-                        DateTime birthday;
-                        if (!DateTime.TryParse(textBox_Birthday.Text, out birthday))
-                        {
-                            MessageBox.Show("Invalid date format. Please enter a valid date.");
-                            return;
-                        }
-
                         cmd.Parameters.AddWithValue("UserName", textBox_Name.Text.Trim());
                         cmd.Parameters.AddWithValue("PassWord", hashedPassWord);
                         cmd.Parameters.AddWithValue("Email", textBox_Email.Text);
                         cmd.Parameters.AddWithValue("@Birthday", birthday.Date);
                         cmd.Parameters.AddWithValue("@FullName", textBox_FullName.Text);
-
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
@@ -150,11 +149,8 @@ namespace FormLogIn
                     }
                     conn.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error {ex.Message}");
-                }
             }
+            catch (Exception ex) { MessageBox.Show($"Error {ex.Message}"); }
         }
 
         private void button_Login_Click(object sender, EventArgs e)

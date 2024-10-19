@@ -8,3 +8,13 @@ D:\NT106-P13-1\BaiTapLyThuyet3\Server\bin\Debug\Server.exe
 D:\NT106-P13-1\BaiTapLyThuyet3\Server\bin\Debug\Server.pdb
 D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.exe
 D:\NT106-P13-1\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Server.exe.config
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Server.exe
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Server.pdb
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.FormSever.resources
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.exe
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb

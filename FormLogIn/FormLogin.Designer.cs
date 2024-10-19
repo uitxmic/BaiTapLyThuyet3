@@ -50,7 +50,6 @@
             textBox_TenDangNhap.PlaceholderText = "Email or Username";
             textBox_TenDangNhap.Size = new Size(250, 27);
             textBox_TenDangNhap.TabIndex = 2;
-            textBox_TenDangNhap.TextChanged += textBox_TenDangNhap_TextChanged;
             // 
             // button_Login
             // 
@@ -74,7 +73,6 @@
             textBox_MatKhau.PlaceholderText = "Password";
             textBox_MatKhau.Size = new Size(250, 33);
             textBox_MatKhau.TabIndex = 4;
-            textBox_MatKhau.TextChanged += textBox_MatKhau_TextChanged;
             // 
             // button_Close
             // 
@@ -143,7 +141,6 @@
             ForeColor = SystemColors.ActiveCaptionText;
             Name = "FormLogin";
             Text = "Login";
-            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
