@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,35 +14,51 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Server
 {
     public partial class FormSever : Form
     {
-        string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        private static TcpListener listener;
-        private static List<TcpClient> clients = new List<TcpClient>();
+        static string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
+        static TcpListener listener;
+        static List<TcpClient> clients = new List<TcpClient>();
         public FormSever()
         {
             InitializeComponent();
-            Task.Run(() => InitializeSocket());
+            Task.Run(() => InitializeListener());
         }
-        private static void InitializeSocket()
+        private void InitializeListener()
         {
+            richTextBox1.Clear();
             listener = new TcpListener(IPAddress.Any, 5555);
             listener.Start();
-            MessageBox.Show("Server started...");
             while (true)
             {
                 TcpClient client = listener.AcceptTcpClient();
                 clients.Add(client);
-                MessageBox.Show("New client connected...");
-                Thread clientThread = new Thread(() => HandleClient(client));
-                clientThread.Start();
+                IPEndPoint clientEndPoint = client.Client.RemoteEndPoint as IPEndPoint;
+                string clientIP = clientEndPoint?.Address.ToString();
+                richTextBox1.AppendText($"New connection from {clientIP}!\n");
+                Task.Run(() => HandleClient(client));
+            }
+        }
+        private static string ComputeSha256Hash(string rawData)
+        {
+            using (SHA256 mySHA256 = SHA256.Create())
+            {
+                byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    sb.Append(bytes[i].ToString("x2"));
+                }
+                return sb.ToString();
             }
         }
         private static void HandleClient(TcpClient client)
-        {
+        { 
             NetworkStream stream = client.GetStream();
             byte[] buffer = new byte[1024];
             int byteCount;
@@ -61,13 +78,46 @@ namespace Server
         {
             if (request.StartsWith("LOGIN"))
             {
-                return "Login successful";
+                string[] parts = request.Split(';');
+                if (parts.Length < 3)
+                {
+                    return "Invalid login request";
+                }
+                string username = parts[1];
+                string password = ComputeSha256Hash(parts[2]);
+                return ResponseFromDatabase(username, password);
             }
-            else if (request.StartsWith("REGISTER"))
+            else return "Fuck";
+           
+        }
+        private static string ResponseFromDatabase(string username, string password)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectString))
             {
-                return "Register successful";
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT UserId FROM USERS WHERE UserName = @username AND PassWord = @password";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            return "User found";
+                        }
+                        else
+                        {
+                            return "User not found";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return "Error: " + ex.Message;
+                }
             }
-            return "Unknown request";
         }
         private void Show_Database()
         {
@@ -114,6 +164,5 @@ namespace Server
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
-
     }
 }
