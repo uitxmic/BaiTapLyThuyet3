@@ -21,3 +21,16 @@ C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.Up2Date
+D:\BaiTapLyThuyet3\Server\bin\Debug\Server.exe.config
+D:\BaiTapLyThuyet3\Server\bin\Debug\Server.exe
+D:\BaiTapLyThuyet3\Server\bin\Debug\Server.pdb
+D:\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.dll
+D:\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.xml
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.FormSever.resources
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.Properties.Resources.resources
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.GenerateResource.cache
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.Up2Date
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.exe
+D:\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb
