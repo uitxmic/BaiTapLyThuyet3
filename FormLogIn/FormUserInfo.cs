@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace FormLogIn
 {
-
     public partial class FormUserInfo : Form
     {
         private int _userId;
@@ -30,11 +29,9 @@ namespace FormLogIn
                 try
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand(queryUserName, conn))
                     {
                         cmd.Parameters.AddWithValue("@userid", _userId);
-
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -53,15 +50,6 @@ namespace FormLogIn
                     MessageBox.Show("Exception " + ex.Message);
                 }
             }
-        }
-        private void textBox_Username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_Email_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button_Close_Click(object sender, EventArgs e)

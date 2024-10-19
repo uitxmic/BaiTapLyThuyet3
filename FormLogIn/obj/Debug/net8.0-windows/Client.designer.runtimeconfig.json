@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\chien\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\vobao\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\vobao\\.nuget\\packages"
     ],
     "configProperties": {

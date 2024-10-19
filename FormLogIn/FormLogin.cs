@@ -13,21 +13,6 @@ namespace FormLogIn
         {
             InitializeComponent();
         }
-
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_TieuDe_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_TieuDe2_Click(object sender, EventArgs e)
-        {
-
-        }
         private void checkBox_RevealPass_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_RevealPass.CheckState == CheckState.Checked)
@@ -36,16 +21,6 @@ namespace FormLogIn
             }
             else
                 textBox_MatKhau.UseSystemPasswordChar = false;
-        }
-
-        private void textBox_TenDangNhap_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_MatKhau_TextChanged(object sender, EventArgs e)
-        {
-
         }
         private string ComputeSha256Hash(string rawData)
         {
@@ -61,7 +36,6 @@ namespace FormLogIn
                 return sb.ToString();
             }
         }
-
         private void button_Login_Click(object sender, EventArgs e)
         {
             string username = textBox_TenDangNhap.Text;
@@ -104,17 +78,23 @@ namespace FormLogIn
                 }
             }
         }
-
         private void button_Close_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void button_SignUp_Click(object sender, EventArgs e)
         {
             FormSignUp formSignUp = new FormSignUp();
             formSignUp.ShowDialog();
         }
-        
+        private void label_TieuDe_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label_TieuDe2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

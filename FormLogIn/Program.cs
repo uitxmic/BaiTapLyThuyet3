@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.Devices;
 
 namespace FormLogIn
