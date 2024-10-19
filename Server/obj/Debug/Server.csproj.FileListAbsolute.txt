@@ -21,3 +21,16 @@ C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.dll
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.xml
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.Up2Date
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\bin\Debug\Server.exe.config
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\bin\Debug\Server.exe
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\bin\Debug\Server.pdb
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.dll
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\bin\Debug\Newtonsoft.Json.xml
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.FormSever.resources
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.Properties.Resources.resources
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.GenerateResource.cache
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.csproj.Up2Date
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.exe
+D:\School\NT106\exercise3\BaiTapLyThuyet3\Server\obj\Debug\Server.pdb

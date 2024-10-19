@@ -75,10 +75,30 @@ namespace Server
                 clients.Remove(client);
                 client.Close();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private bool IsUserNameExists(string userName)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    string checkQuery = "SELECT COUNT(1) FROM USERS WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("UserName", userName);
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
         private string HandleRequest(string request)
         {
@@ -96,12 +116,61 @@ namespace Server
 
             if (request.StartsWith("REGISTER"))
             {
-                return "Oh fuck! I didn't do that yet :))";
+                string[] parts = request.Split(';');
+                MessageBox.Show(request);
+                MessageBox.Show(Convert.ToString(parts.Length));
+                if (parts.Length != 6) return "Invalid login request";
+                string usr = parts[1];
+                               
+                if (IsUserNameExists(usr)) return "Username already exists.";
+                return SignupQuery(parts);
             }
 
             return "Unknown request";
            
         }
+        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
+
+        private string SignupQuery(string[] request)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("UserName", request[1].Trim());
+                        cmd.Parameters.AddWithValue("PassWord", ComputeSha256Hash(request[2]));
+                        cmd.Parameters.AddWithValue("Email", request[3]);
+                        if (DateTime.TryParse(request[4], out DateTime dt))
+                            cmd.Parameters.AddWithValue("Birthday", dt);
+                        cmd.Parameters.AddWithValue("FullName", request[5]);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            conn.Close();
+                            return "200;Sign up sucessfully";
+
+                        }
+                        else
+                        {
+                            conn.Close();
+                            return "301;Error Occur.";
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Database Signup Error: " + ex.Message;
+            }
+        }
+
+
+
         private string LoginQuery(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection(ConnectString))
@@ -133,7 +202,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    return "Error: " + ex.Message;
+                    return "Database Error: " + ex.Message;
                 }
             }
         }
