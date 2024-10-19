@@ -63,16 +63,21 @@ namespace Server
             byte[] buffer = new byte[1024];
             int byteCount;
 
-            while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
-            {
-                string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
-                MessageBox.Show("Received: " + request);
-                string response = HandleRequest(request);
-                byte[] responseData = Encoding.ASCII.GetBytes(response);
-                stream.Write(responseData, 0, responseData.Length);
+                while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
+                    MessageBox.Show("Received: " + request);
+                    string response = HandleRequest(request);
+                    byte[] responseData = Encoding.ASCII.GetBytes(response);
+                    stream.Write(responseData, 0, responseData.Length);
+                }
+                clients.Remove(client);
+                client.Close();
             }
-            clients.Remove(client);
-            client.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private static string HandleRequest(string request)
         {
