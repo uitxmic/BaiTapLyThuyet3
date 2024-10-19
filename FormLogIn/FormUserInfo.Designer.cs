@@ -85,7 +85,7 @@
             Controls.Add(textBox_DateofBirth);
             Controls.Add(textBox_Fullname);
             Controls.Add(textBox_Username);
-            ForeColor = SystemColors.Control;
+            ForeColor = SystemColors.MenuText;
             Name = "FormUserInfo";
             Text = "FormUserInfo";
             ResumeLayout(false);

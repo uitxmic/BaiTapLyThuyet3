@@ -13,6 +13,6 @@ namespace Client
         public string Password { get; set; }
         public string Email { get; set; }
         public string FullName { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }

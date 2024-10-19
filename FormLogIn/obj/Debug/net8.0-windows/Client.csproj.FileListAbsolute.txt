@@ -124,7 +124,6 @@ D:\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreap
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormLogin.resources
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormSignUp.resources
-D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.UserInfo.resources
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
 D:\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.GeneratedMSBuildEditorConfig.editorconfig
