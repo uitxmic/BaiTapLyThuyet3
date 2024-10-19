@@ -8,48 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace FormLogIn
 {
+    public class UserInfo
+    {
+        public required string UserName { get; set; } 
+        public required string FullName { get; set; }
+        public required string BirthDay { get; set; }
+        public required string Email { get; set; }
+    }
+
     public partial class FormUserInfo : Form
     {
-        private int _userId;
-        string connectionString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        public FormUserInfo(int userId)
+        public FormUserInfo(string response)
         {
             InitializeComponent();
-            _userId = userId;
-            LoadUserInfo();
-        }
-        private void LoadUserInfo()
-        {
-            string queryUserName = "SELECT * FROM USERS WHERE UserId = @userid";
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(queryUserName, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@userid", _userId);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                textBox_Username.Text = reader["UserName"].ToString();
-                                textBox_Email.Text = reader["Email"].ToString();
-                                textBox_Fullname.Text = reader["FullName"].ToString();
-                                DateTime birthday = (DateTime)reader["BirthDay"];
-                                textBox_Birthday.Text = birthday.ToString("yyyy-MM-dd");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Exception " + ex.Message);
-                }
-            }
+            UserInfo userInfo = JsonConvert.DeserializeObject<UserInfo>(response);
+
+            textBox_Username.Text = userInfo.UserName;
+            textBox_Fullname.Text = userInfo.FullName;
+            textBox_Birthday.Text = DateTime.Parse(userInfo.BirthDay).ToString("yyyy-MM-dd");
+            textBox_Email.Text = userInfo.Email;
         }
 
         private void button_Close_Click(object sender, EventArgs e)
@@ -58,3 +39,4 @@ namespace FormLogIn
         }
     }
 }
+

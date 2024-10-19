@@ -12,24 +12,38 @@ namespace FormLogIn
         string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
         static TcpClient client;
         static NetworkStream stream;
-
         public FormLogin()
         {
             InitializeComponent();
-            Task.Run(() => InitializeSocket("Hello"));
         }
-        private void InitializeSocket(string request)
+        void SendToTCPServer(string request)
         {
             client = new TcpClient("127.0.0.1", 5555);
             stream = client.GetStream();
-            MessageBox.Show("Connected to server...");
             byte[] requestData = Encoding.ASCII.GetBytes(request);
             stream.Write(requestData, 0, requestData.Length);
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[4096];
             int byteCount = stream.Read(buffer, 0, buffer.Length);
             string response = Encoding.ASCII.GetString(buffer, 0, byteCount);
-            MessageBox.Show("Server response: " + response);
+            HandleServerResponse(response);
             client.Close();
+        }
+
+        void HandleServerResponse(string response)
+        {
+            if (response.StartsWith("{"))
+            {
+                FormUserInfo userInfo = new FormUserInfo(response);
+                userInfo.ShowDialog();
+            }
+        }
+        
+        private void button_Login_Click(object sender, EventArgs e)
+        {
+            string username = textBox_TenDangNhap.Text;
+            string password = textBox_MatKhau.Text;
+            string request = $"LOGIN;{username};{password}";
+            SendToTCPServer(request);
         }
         private void checkBox_RevealPass_CheckedChanged(object sender, EventArgs e)
         {
@@ -39,13 +53,6 @@ namespace FormLogIn
             }
             else
                 textBox_MatKhau.UseSystemPasswordChar = false;
-        }
-        private void button_Login_Click(object sender, EventArgs e)
-        {
-            string username = textBox_TenDangNhap.Text;
-            string password = textBox_MatKhau.Text;
-            string request = $"LOGIN;{username};{password}";
-            InitializeSocket(request);
         }
         private void button_Close_Click(object sender, EventArgs e)
         {

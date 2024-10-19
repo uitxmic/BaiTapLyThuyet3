@@ -30,7 +30,6 @@ C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windo
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.csproj.AssemblyReference.cache
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormLogin.resources
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormSignUp.resources
-C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.FormUserInfo.resources
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.csproj.GenerateResource.cache
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.GeneratedMSBuildEditorConfig.editorconfig
@@ -90,3 +89,5 @@ D:\NT106-P13-1\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\refint\Client.
 D:\NT106-P13-1\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.pdb
 D:\NT106-P13-1\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 D:\NT106-P13-1\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\ref\Client.dll
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\FormLogIn.UserInfo.resources

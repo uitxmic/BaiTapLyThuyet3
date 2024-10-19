@@ -8,13 +8,14 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -43,7 +44,7 @@ namespace Server
                 Task.Run(() => HandleClient(client));
             }
         }
-        private static string ComputeSha256Hash(string rawData)
+        private string ComputeSha256Hash(string rawData)
         {
             using (SHA256 mySHA256 = SHA256.Create())
             {
@@ -57,7 +58,7 @@ namespace Server
                 return sb.ToString();
             }
         }
-        private static void HandleClient(TcpClient client)
+        private void HandleClient(TcpClient client)
         { 
             NetworkStream stream = client.GetStream();
             byte[] buffer = new byte[1024];
@@ -67,7 +68,6 @@ namespace Server
                 while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
                 {
                     string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
-                    MessageBox.Show("Received: " + request);
                     string response = HandleRequest(request);
                     byte[] responseData = Encoding.ASCII.GetBytes(response);
                     stream.Write(responseData, 0, responseData.Length);
@@ -80,7 +80,7 @@ namespace Server
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private static string HandleRequest(string request)
+        private string HandleRequest(string request)
         {
             if (request.StartsWith("LOGIN"))
             {
@@ -93,29 +93,49 @@ namespace Server
                 string password = ComputeSha256Hash(parts[2]);
                 return ResponseFromDatabase(username, password);
             }
-            else return "Fuck";
+
+            if (request.StartsWith("REGISTER"))
+            {
+                return "Oh fuck! I didn't do that yet :))";
+            }
+
+            return "Unknown request";
            
         }
-        private static string ResponseFromDatabase(string username, string password)
+        private string ResponseFromDatabase(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection(ConnectString))
             {
                 try
                 {
                     conn.Open();
-                    string query = "SELECT UserId FROM USERS WHERE UserName = @username AND PassWord = @password";
+                    string query = "SELECT UserName, FullName, BirthDay, Email FROM USERS WHERE UserName = @username AND PassWord = @password";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            return "User found";
-                        }
-                        else
-                        {
-                            return "User not found";
+                            if (reader.Read())
+                            {
+                                string userName = reader["UserName"].ToString();
+                                string fullName = reader["FullName"].ToString();
+                                DateTime birthDay = Convert.ToDateTime(reader["BirthDay"]);
+                                string email = reader["Email"].ToString();
+                                var userInfo = new
+                                {
+                                    UserName = userName,
+                                    FullName = fullName,
+                                    BirthDay = birthDay.ToString("yyyy-MM-dd"),
+                                    Email = email
+                                };
+                                string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(userInfo);
+                                return jsonResponse;
+                            }
+                            else
+                            {
+                                return "Invalid username or password!";
+                            }
                         }
                     }
                 }
