@@ -16,7 +16,7 @@ namespace FormLogIn
         {
             InitializeComponent();
         }
-        void SendToTCPServer(string request)
+        void SendAndReceive(string request)
         {
             client = new TcpClient("127.0.0.1", 5555);
             stream = client.GetStream();
@@ -31,11 +31,7 @@ namespace FormLogIn
 
         void HandleServerResponse(string response)
         {
-            if (response.StartsWith("{"))
-            {
-                FormUserInfo userInfo = new FormUserInfo(response);
-                userInfo.ShowDialog();
-            }
+            MessageBox.Show(response);
         }
         
         private void button_Login_Click(object sender, EventArgs e)
@@ -43,7 +39,7 @@ namespace FormLogIn
             string username = textBox_TenDangNhap.Text;
             string password = textBox_MatKhau.Text;
             string request = $"LOGIN;{username};{password}";
-            SendToTCPServer(request);
+            SendAndReceive(request);
         }
         private void checkBox_RevealPass_CheckedChanged(object sender, EventArgs e)
         {

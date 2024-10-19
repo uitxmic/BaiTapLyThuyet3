@@ -130,6 +130,7 @@ namespace Server
                                     Email = email
                                 };
                                 string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(userInfo);
+                                MessageBox.Show(jsonResponse);
                                 return jsonResponse;
                             }
                             else
