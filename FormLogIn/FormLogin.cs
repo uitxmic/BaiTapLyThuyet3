@@ -3,13 +3,13 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Security.Cryptography;
 using System.Net.Sockets;
+using System.ComponentModel.DataAnnotations;
 
 namespace FormLogIn
 {
     public partial class FormLogin : Form
     {
         string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        string query = "SELECT PassWord FROM USERS WHERE UserName = @username";
         static TcpClient client;
         static NetworkStream stream;
 

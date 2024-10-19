@@ -62,7 +62,8 @@ namespace Server
             NetworkStream stream = client.GetStream();
             byte[] buffer = new byte[1024];
             int byteCount;
-
+            try
+            { 
                 while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
                 {
                     string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
