@@ -31,7 +31,7 @@ namespace FormLogIn
 
         void HandleServerResponse(string response)
         {
-            if (response.StartsWith("{"))
+            if (response.StartsWith("200"))
             {
                 FormUserInfo fui = new FormUserInfo(response);
                 fui.Show();

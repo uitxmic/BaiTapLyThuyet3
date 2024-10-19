@@ -91,7 +91,7 @@ namespace Server
                 }
                 string username = parts[1];
                 string password = ComputeSha256Hash(parts[2]);
-                return ResponseFromDatabase(username, password);
+                return LoginQuery(username, password);
             }
 
             if (request.StartsWith("REGISTER"))
@@ -102,7 +102,7 @@ namespace Server
             return "Unknown request";
            
         }
-        private string ResponseFromDatabase(string username, string password)
+        private string LoginQuery(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection(ConnectString))
             {
@@ -122,16 +122,7 @@ namespace Server
                                 string fullName = reader["FullName"].ToString();
                                 DateTime birthDay = Convert.ToDateTime(reader["BirthDay"]);
                                 string email = reader["Email"].ToString();
-                                var userInfo = new
-                                {
-                                    UserName = userName,
-                                    FullName = fullName,
-                                    BirthDay = birthDay.ToString("yyyy-MM-dd"),
-                                    Email = email
-                                };
-                                string jsonResponse = Newtonsoft.Json.JsonConvert.SerializeObject(userInfo);
-                                MessageBox.Show(jsonResponse);
-                                return jsonResponse;
+                                return $"200;{userName};{fullName};{birthDay.ToString("yyyy/MM/dd")};{email}";
                             }
                             else
                             {
