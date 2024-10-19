@@ -143,19 +143,23 @@ namespace Server
                         cmd.Parameters.AddWithValue("Email", request[3]);
                         if (DateTime.TryParse(request[4], out DateTime dt))
                             cmd.Parameters.AddWithValue("Birthday", dt);
-                        cmd.Parameters.AddWithValue("FullName", request[5]);
+                        cmd.Parameters.AddWithValue("FullName", request[5].Trim());
 
                         int rowsAffected = cmd.ExecuteNonQuery();
+                        string response = "200;";
+                        response += request[1].Trim() + ';';
+                        response += request[5].Trim() + ';';
+                        response += dt.ToString("dd/MM/yyyy") + ";";
+                        response += request[3] + ";";
                         if (rowsAffected > 0)
                         {
                             conn.Close();
-                            return "200;Sign up sucessfully";
-
+                            return response;
                         }
                         else
                         {
                             conn.Close();
-                            return "301;Error Occur.";
+                            return "301;Error Occur.;[NULL];[NULL];[NULL]";
                         }
                     }
                     
@@ -226,7 +230,7 @@ namespace Server
         }
         private void Delete_row_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
@@ -243,7 +247,7 @@ namespace Server
                             cmm.ExecuteNonQuery();
                         }
                         dataGridView1.Rows.RemoveAt(rowIndex);
-                        MessageBox.Show("Successfully deleted.");
+                        MessageBox.Show("Successfully deleted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
