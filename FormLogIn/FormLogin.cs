@@ -31,7 +31,12 @@ namespace FormLogIn
 
         void HandleServerResponse(string response)
         {
-            MessageBox.Show(response);
+            if (response.StartsWith("{"))
+            {
+                FormUserInfo fui = new FormUserInfo(response);
+                fui.Show();
+            }
+            else MessageBox.Show(response);
         }
         
         private void button_Login_Click(object sender, EventArgs e)
