@@ -117,8 +117,6 @@ namespace Server
             if (request.StartsWith("REGISTER"))
             {
                 string[] parts = request.Split(';');
-                MessageBox.Show(request);
-                MessageBox.Show(Convert.ToString(parts.Length));
                 if (parts.Length != 6) return "Invalid login request";
                 string usr = parts[1];
                                
