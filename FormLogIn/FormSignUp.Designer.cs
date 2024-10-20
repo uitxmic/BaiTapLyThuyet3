@@ -38,8 +38,8 @@
             button_Login = new Button();
             label1 = new Label();
             checkBox_Pass = new CheckBox();
-            textBox_Birthday = new TextBox();
             textBox_FullName = new TextBox();
+            textBox_Birthday = new TextBox();
             SuspendLayout();
             // 
             // label_TieuDe2
@@ -141,17 +141,6 @@
             checkBox_Pass.UseVisualStyleBackColor = false;
             checkBox_Pass.CheckedChanged += checkBox_Pass_CheckedChanged;
             // 
-            // textBox_Birthday
-            // 
-            textBox_Birthday.BackColor = SystemColors.MenuText;
-            textBox_Birthday.BorderStyle = BorderStyle.None;
-            textBox_Birthday.ForeColor = SystemColors.Window;
-            textBox_Birthday.Location = new Point(242, 489);
-            textBox_Birthday.Name = "textBox_Birthday";
-            textBox_Birthday.PlaceholderText = "Your Birthday";
-            textBox_Birthday.Size = new Size(248, 20);
-            textBox_Birthday.TabIndex = 14;
-            // 
             // textBox_FullName
             // 
             textBox_FullName.BackColor = SystemColors.MenuText;
@@ -163,14 +152,25 @@
             textBox_FullName.Size = new Size(248, 20);
             textBox_FullName.TabIndex = 15;
             // 
+            // textBox_Birthday
+            // 
+            textBox_Birthday.BackColor = SystemColors.MenuText;
+            textBox_Birthday.BorderStyle = BorderStyle.None;
+            textBox_Birthday.ForeColor = SystemColors.Window;
+            textBox_Birthday.Location = new Point(242, 489);
+            textBox_Birthday.Name = "textBox_Birthday";
+            textBox_Birthday.PlaceholderText = "Your Birthday";
+            textBox_Birthday.Size = new Size(248, 20);
+            textBox_Birthday.TabIndex = 16;
+            // 
             // FormSignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1302, 828);
-            Controls.Add(textBox_FullName);
             Controls.Add(textBox_Birthday);
+            Controls.Add(textBox_FullName);
             Controls.Add(checkBox_Pass);
             Controls.Add(label1);
             Controls.Add(button_Login);
@@ -196,7 +196,7 @@
         private Button button_Login;
         private Label label1;
         private CheckBox checkBox_Pass;
-        private TextBox textBox_Birthday;
         private TextBox textBox_FullName;
+        private TextBox textBox_Birthday;
     }
 }

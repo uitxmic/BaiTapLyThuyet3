@@ -61,24 +61,43 @@ namespace Server
         private void HandleClient(TcpClient client)
         { 
             NetworkStream stream = client.GetStream();
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[4096];
             int byteCount;
             try
             { 
                 while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
+                    string request = Encoding.Unicode.GetString(buffer, 0, byteCount);
                     string response = HandleRequest(request);
-                    byte[] responseData = Encoding.ASCII.GetBytes(response);
+                    byte[] responseData = Encoding.Unicode.GetBytes(response);
                     stream.Write(responseData, 0, responseData.Length);
                 }
                 clients.Remove(client);
                 client.Close();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private bool IsUserNameExists(string userName)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    string checkQuery = "SELECT COUNT(1) FROM USERS WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("UserName", userName);
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
         private string HandleRequest(string request)
         {
@@ -96,11 +115,58 @@ namespace Server
 
             if (request.StartsWith("REGISTER"))
             {
-                return "Oh fuck! I didn't do that yet :))";
+                string[] parts = request.Split(';');
+                if (parts.Length != 6) return "Invalid login request";
+                string usr = parts[1];
+                               
+                if (IsUserNameExists(usr)) return "Username already exists.";
+                return SignupQuery(parts);
             }
 
             return "Unknown request";
            
+        }
+        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
+        private string SignupQuery(string[] request)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("UserName", request[1].Trim());
+                        cmd.Parameters.AddWithValue("PassWord", ComputeSha256Hash(request[2]));
+                        cmd.Parameters.AddWithValue("Email", request[3]);
+                        if (DateTime.TryParse(request[4], out DateTime dt))
+                            cmd.Parameters.AddWithValue("Birthday", dt);
+                        cmd.Parameters.AddWithValue("FullName", request[5].Trim());
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        string response = "200;";
+                        response += request[1].Trim() + ';';
+                        response += request[5].Trim() + ';';
+                        response += dt.ToString("dd/MM/yyyy") + ";";
+                        response += request[3] + ";";
+                        if (rowsAffected > 0)
+                        {
+                            conn.Close();
+                            return response;
+                        }
+                        else
+                        {
+                            conn.Close();
+                            return "301;Error Occur.;[NULL];[NULL];[NULL]";
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Database Signup Error: " + ex.Message;
+            }
         }
         private string LoginQuery(string username, string password)
         {
@@ -133,7 +199,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    return "Error: " + ex.Message;
+                    return "Database Error: " + ex.Message;
                 }
             }
         }
@@ -159,7 +225,7 @@ namespace Server
         }
         private void Delete_row_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure to delete this row?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
                 {
@@ -176,7 +242,7 @@ namespace Server
                             cmm.ExecuteNonQuery();
                         }
                         dataGridView1.Rows.RemoveAt(rowIndex);
-                        MessageBox.Show("Successfully deleted.");
+                        MessageBox.Show("Successfully deleted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }

@@ -10,8 +10,8 @@ namespace FormLogIn
     public partial class FormLogin : Form
     {
         string ConnectString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        static TcpClient client;
-        static NetworkStream stream;
+        static TcpClient? client;
+        static NetworkStream? stream;
         public FormLogin()
         {
             InitializeComponent();
@@ -20,11 +20,11 @@ namespace FormLogIn
         {
             client = new TcpClient("127.0.0.1", 5555);
             stream = client.GetStream();
-            byte[] requestData = Encoding.ASCII.GetBytes(request);
+            byte[] requestData = Encoding.Unicode.GetBytes(request);
             stream.Write(requestData, 0, requestData.Length);
             byte[] buffer = new byte[4096];
             int byteCount = stream.Read(buffer, 0, buffer.Length);
-            string response = Encoding.ASCII.GetString(buffer, 0, byteCount);
+            string response = Encoding.Unicode.GetString(buffer, 0, byteCount);
             HandleServerResponse(response);
             client.Close();
         }

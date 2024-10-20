@@ -18,10 +18,17 @@ namespace FormLogIn
         {
             InitializeComponent();
             string[] parts = response.Split(';');
-            textBox_Username.Text = parts[1];
-            textBox_Fullname.Text = parts[2];
-            textBox_Birthday.Text = parts[3];
-            textBox_Email.Text = parts[4];
+            if (parts[0] == "200")
+            {
+                textBox_Username.Text = parts[1];
+                textBox_Fullname.Text = parts[2];
+                textBox_Birthday.Text = parts[3];
+                textBox_Email.Text = parts[4];
+            }
+            else
+            {
+                MessageBox.Show("An error has occurred. Please contact system administrator for assistance.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_Close_Click(object sender, EventArgs e)
