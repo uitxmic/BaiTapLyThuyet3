@@ -47,7 +47,6 @@ namespace FormLogIn
             textBox_Username.ReadOnly = true;
             textBox_Username.Size = new Size(236, 20);
             textBox_Username.TabIndex = 1;
-            textBox_Username.TextChanged += textBox_Username_TextChanged;
             // 
             // textBox_Email
             // 
@@ -59,7 +58,6 @@ namespace FormLogIn
             textBox_Email.ReadOnly = true;
             textBox_Email.Size = new Size(236, 20);
             textBox_Email.TabIndex = 3;
-            textBox_Email.TextChanged += textBox_Email_TextChanged;
             // 
             // button_Close
             // 
