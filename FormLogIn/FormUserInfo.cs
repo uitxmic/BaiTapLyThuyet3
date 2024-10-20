@@ -8,47 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace FormLogIn
 {
     public partial class FormUserInfo : Form
     {
-        private int _userId;
-        string connectionString = @"Data Source=localhost;Initial Catalog=Bai_tap_ly_thuyet_3;Integrated Security=True";
-        public FormUserInfo(int userId)
+        public FormUserInfo(string response)
         {
             InitializeComponent();
-            _userId = userId;
-            LoadUserInfo();
-        }
-        private void LoadUserInfo()
-        {
-            string queryUserName = "SELECT * FROM USERS WHERE UserId = @userid";
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string[] parts = response.Split(';');
+            if (parts[0] == "200")
             {
-                try
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(queryUserName, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@userid", _userId);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                textBox_Username.Text = reader["UserName"].ToString();
-                                textBox_Email.Text = reader["Email"].ToString();
-                                textBox_Fullname.Text = reader["FullName"].ToString();
-                                DateTime birthday = (DateTime)reader["BirthDay"];
-                                textBox_Birthday.Text = birthday.ToString("yyyy-MM-dd");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Exception " + ex.Message);
-                }
+                textBox_Username.Text = parts[1];
+                textBox_Fullname.Text = parts[2];
+                textBox_Birthday.Text = parts[3];
+                textBox_Email.Text = parts[4];
+            }
+            else
+            {
+                MessageBox.Show("An error has occurred. Please contact system administrator for assistance.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -58,3 +37,4 @@ namespace FormLogIn
         }
     }
 }
+
