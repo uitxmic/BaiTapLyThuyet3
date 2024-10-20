@@ -61,15 +61,15 @@ namespace Server
         private void HandleClient(TcpClient client)
         { 
             NetworkStream stream = client.GetStream();
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[4096];
             int byteCount;
             try
             { 
                 while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    string request = Encoding.ASCII.GetString(buffer, 0, byteCount);
+                    string request = Encoding.Unicode.GetString(buffer, 0, byteCount);
                     string response = HandleRequest(request);
-                    byte[] responseData = Encoding.ASCII.GetBytes(response);
+                    byte[] responseData = Encoding.Unicode.GetBytes(response);
                     stream.Write(responseData, 0, responseData.Length);
                 }
                 clients.Remove(client);
@@ -81,7 +81,6 @@ namespace Server
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private bool IsUserNameExists(string userName)
         {
             try
@@ -128,7 +127,6 @@ namespace Server
            
         }
         string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
-
         private string SignupQuery(string[] request)
         {
             try
@@ -170,9 +168,6 @@ namespace Server
                 return "Database Signup Error: " + ex.Message;
             }
         }
-
-
-
         private string LoginQuery(string username, string password)
         {
             using (SqlConnection conn = new SqlConnection(ConnectString))

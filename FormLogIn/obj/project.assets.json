@@ -6337,19 +6337,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\vobao\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\School\\NT106\\exercise3\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "D:\\School\\NT106\\exercise3\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\School\\NT106\\exercise3\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
+      "projectPath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "packagesPath": "C:\\Users\\vobao\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vobao\\Documents\\GitHub\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vobao\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6420,7 +6420,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

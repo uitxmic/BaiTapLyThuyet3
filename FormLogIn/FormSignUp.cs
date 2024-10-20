@@ -25,24 +25,22 @@ namespace FormLogIn
         {
             client = new TcpClient("127.0.0.1", 5555);
             stream = client.GetStream();
-            byte[] requestData = Encoding.ASCII.GetBytes(request);
+            byte[] requestData = Encoding.Unicode.GetBytes(request);
             stream.Write(requestData, 0, requestData.Length);
             byte[] buffer = new byte[4096];
             int byteCount = stream.Read(buffer, 0, buffer.Length);
-            string response = Encoding.ASCII.GetString(buffer, 0, byteCount);
+            string response = Encoding.Unicode.GetString(buffer, 0, byteCount);
             HandleServerResponse(response);
             client.Close();
         }
 
-        
         void HandleServerResponse(string response)
         {
-            
             if (response.StartsWith("200"))
             {
                 this.Close();
-                FormUserInfo fui = new FormUserInfo(response);
-                fui.Show();                
+                MessageBox.Show("Sign up successfully!");
+                ClearTextBox();
             }
             else MessageBox.Show(response);
         }
@@ -71,7 +69,6 @@ namespace FormLogIn
                 textBox_ConfirmPassword.UseSystemPasswordChar = true;
             }
         }
-        
         private string ComputeSha256Hash(string rawData)
         {
             using (SHA256 mySHA256 = SHA256.Create())
