@@ -150,7 +150,7 @@ namespace Client
 
         private void listBS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedItemText = (listBS.SelectedItems ?? "(none)").ToString();
+            var selectedItemText = (listBS.SelectedItems.ToString() ?? "(none)").ToString();
             MessageBox.Show("Selected: " + selectedItemText);
         }
     }
