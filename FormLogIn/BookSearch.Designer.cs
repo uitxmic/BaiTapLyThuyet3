@@ -32,11 +32,8 @@
             dgvBooks = new DataGridView();
             txtSearch = new TextBox();
             btnSearch = new Button();
-            btnCreateShelf = new Button();
-            txtShelfTitle = new TextBox();
-            txtShelfDescription = new TextBox();
+            btnShowShelf = new Button();
             progressBar1 = new ProgressBar();
-            lvShelf = new ListView();
             Name = new DataGridViewTextBoxColumn();
             Author = new DataGridViewTextBoxColumn();
             clTitle = new DataGridViewTextBoxColumn();
@@ -50,7 +47,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DarkRed;
-            label1.Location = new Point(22, 29);
+            label1.Location = new Point(21, 28);
             label1.Name = "label1";
             label1.Size = new Size(190, 32);
             label1.TabIndex = 0;
@@ -59,10 +56,10 @@
             // dgvBooks
             // 
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBooks.Location = new Point(218, 90);
+            dgvBooks.Location = new Point(12, 90);
             dgvBooks.Name = "dgvBooks";
             dgvBooks.RowHeadersWidth = 51;
-            dgvBooks.Size = new Size(752, 351);
+            dgvBooks.Size = new Size(958, 351);
             dgvBooks.TabIndex = 1;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
             // 
@@ -86,50 +83,23 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
-            // btnCreateShelf
+            // btnShowShelf
             // 
-            btnCreateShelf.Font = new Font("Microsoft Sans Serif", 10.2F);
-            btnCreateShelf.Location = new Point(12, 85);
-            btnCreateShelf.Name = "btnCreateShelf";
-            btnCreateShelf.Size = new Size(200, 34);
-            btnCreateShelf.TabIndex = 4;
-            btnCreateShelf.Text = "Bookshelf List";
-            btnCreateShelf.UseVisualStyleBackColor = true;
-            btnCreateShelf.Click += btnCreateShelf_Click;
-            // 
-            // txtShelfTitle
-            // 
-            txtShelfTitle.Font = new Font("Microsoft Sans Serif", 10.2F);
-            txtShelfTitle.Location = new Point(12, 125);
-            txtShelfTitle.Name = "txtShelfTitle";
-            txtShelfTitle.PlaceholderText = "Shelf's name";
-            txtShelfTitle.Size = new Size(200, 27);
-            txtShelfTitle.TabIndex = 5;
-            // 
-            // txtShelfDescription
-            // 
-            txtShelfDescription.Font = new Font("Microsoft Sans Serif", 10.2F);
-            txtShelfDescription.Location = new Point(12, 158);
-            txtShelfDescription.Name = "txtShelfDescription";
-            txtShelfDescription.PlaceholderText = "Shelf's description";
-            txtShelfDescription.Size = new Size(200, 27);
-            txtShelfDescription.TabIndex = 6;
+            btnShowShelf.Font = new Font("Microsoft Sans Serif", 10.2F);
+            btnShowShelf.Location = new Point(451, 45);
+            btnShowShelf.Name = "btnShowShelf";
+            btnShowShelf.Size = new Size(200, 39);
+            btnShowShelf.TabIndex = 4;
+            btnShowShelf.Text = "Bookshelf List";
+            btnShowShelf.UseVisualStyleBackColor = true;
+            btnShowShelf.Click += btnCreateShelf_Click;
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(451, 45);
+            progressBar1.Location = new Point(657, 45);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(519, 39);
+            progressBar1.Size = new Size(313, 39);
             progressBar1.TabIndex = 7;
-            // 
-            // lvShelf
-            // 
-            lvShelf.Font = new Font("Microsoft Sans Serif", 10.2F);
-            lvShelf.Location = new Point(12, 191);
-            lvShelf.Name = "lvShelf";
-            lvShelf.Size = new Size(200, 250);
-            lvShelf.TabIndex = 8;
-            lvShelf.UseCompatibleStateImageBehavior = false;
             // 
             // Name
             // 
@@ -168,11 +138,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 453);
-            Controls.Add(lvShelf);
             Controls.Add(progressBar1);
-            Controls.Add(txtShelfDescription);
-            Controls.Add(txtShelfTitle);
-            Controls.Add(btnCreateShelf);
+            Controls.Add(btnShowShelf);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(dgvBooks);
@@ -190,11 +157,8 @@
         private DataGridView dgvBooks;
         private TextBox txtSearch;
         private Button btnSearch;
-        private Button btnCreateShelf;
-        private TextBox txtShelfTitle;
-        private TextBox txtShelfDescription;
+        private Button btnShowShelf;
         private ProgressBar progressBar1;
-        private ListView lvShelf;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn Author;
         private DataGridViewTextBoxColumn clTitle;

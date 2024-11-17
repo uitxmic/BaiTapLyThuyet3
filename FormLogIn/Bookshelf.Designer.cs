@@ -47,7 +47,6 @@
             listBS.TabIndex = 0;
             listBS.UseCompatibleStateImageBehavior = false;
             listBS.View = View.Details;
-            listBS.SelectedIndexChanged += listBS_SelectedIndexChanged;
             listBS.Click += listBS_Click;
             // 
             // Id
@@ -93,7 +92,6 @@
             label1.Size = new Size(368, 20);
             label1.TabIndex = 3;
             label1.Text = "Please click on an ID to view the bookshelf's volume(s)";
-            label1.Click += label1_Click;
             // 
             // Bookshelf
             // 

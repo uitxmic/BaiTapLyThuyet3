@@ -7,7 +7,7 @@
     <Compile Update="BookSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Bookshelf.cs">
+    <Compile Update="BookShelf.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormSignUp.cs">

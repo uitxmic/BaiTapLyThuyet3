@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             rtbDetails = new RichTextBox();
-            btnAddToShelf = new Button();
-            btnRemoveFromShelf = new Button();
-            progressBar1 = new ProgressBar();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,37 +43,12 @@
             rtbDetails.TabIndex = 0;
             rtbDetails.Text = "";
             // 
-            // btnAddToShelf
-            // 
-            btnAddToShelf.Location = new Point(12, 130);
-            btnAddToShelf.Name = "btnAddToShelf";
-            btnAddToShelf.Size = new Size(174, 30);
-            btnAddToShelf.TabIndex = 1;
-            btnAddToShelf.Text = "Add to shelf";
-            btnAddToShelf.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveFromShelf
-            // 
-            btnRemoveFromShelf.Location = new Point(192, 130);
-            btnRemoveFromShelf.Name = "btnRemoveFromShelf";
-            btnRemoveFromShelf.Size = new Size(144, 30);
-            btnRemoveFromShelf.TabIndex = 2;
-            btnRemoveFromShelf.Text = "Remove from shelf";
-            btnRemoveFromShelf.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            progressBar1.Location = new Point(12, 166);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(324, 30);
-            progressBar1.TabIndex = 3;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DarkRed;
-            label1.Location = new Point(76, 51);
+            label1.Location = new Point(80, 80);
             label1.Name = "label1";
             label1.Size = new Size(183, 38);
             label1.TabIndex = 4;
@@ -97,9 +69,6 @@
             ClientSize = new Size(482, 553);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
-            Controls.Add(progressBar1);
-            Controls.Add(btnRemoveFromShelf);
-            Controls.Add(btnAddToShelf);
             Controls.Add(rtbDetails);
             Name = "BookInfo";
             Text = "BookInfo";
@@ -111,9 +80,6 @@
         #endregion
 
         private RichTextBox rtbDetails;
-        private Button btnAddToShelf;
-        private Button btnRemoveFromShelf;
-        private ProgressBar progressBar1;
         private Label label1;
         private PictureBox pictureBox1;
     }

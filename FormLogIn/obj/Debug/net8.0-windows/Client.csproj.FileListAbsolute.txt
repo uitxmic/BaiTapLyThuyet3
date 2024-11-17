@@ -157,3 +157,4 @@ D:\School\NT106\exercise3\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Cli
 D:\School\NT106\exercise3\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.BookSearch.resources
 D:\School\NT106\exercise3\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.Bookshelf.resources
 D:\School\NT106\exercise3\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.ListBook.resources
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.ListBook.resources

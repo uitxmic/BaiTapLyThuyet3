@@ -1,13 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Client
 {
@@ -19,16 +10,17 @@ namespace Client
         public int ShelfID { get { return shelfID; } set { shelfID = value; } }
         readonly static string api_key = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(en_api));
         readonly static string requestUrl = $"https://www.googleapis.com/books/v1/users/{userId}/bookshelves/{shelfID}/volumes?key={api_key}";
+        
         public ListBook()
         {
             InitializeComponent();
         }
+        
         public ListBook(int shelfID)
         {
             InitializeComponent();
             this.ShelfID = shelfID;
         }
-
 
         private async void btnShow_Click(object sender, EventArgs e)
         {
@@ -42,11 +34,9 @@ namespace Client
                     var volumesResponse = JsonConvert.DeserializeObject<VolumesResponse>(responseData);
                     if (volumesResponse?.Items != null && volumesResponse.Items.Count > 0)
                     {
-                        //MessageBox.Show("Books in the Bookshelf:");
                         foreach (var volume in volumesResponse.Items)
                         {
                             var info = volume.VolumeInfo;
-                            //MessageBox.Show($"- Title: {info.Title}\nAuthors: {string.Join(", ", info.Authors ?? new List<string>())}");
                             string? id = (volume.Id).ToString();
                             string? title = info.Title;
                             string? authors = string.Join(", ", info.Authors ?? new List<string>());
@@ -75,7 +65,8 @@ namespace Client
         private void btnInfo_Click(object sender, EventArgs e)
         {
             list_book.Select();
-            string volID= list_book.SelectedItems[0].Text.ToString();
+            if (list_book.SelectedItems.Count == 0) return;
+            string volID = list_book.SelectedItems.ToString() ?? "";
             {
                 BookInfo ins = new(volID);
                 ins.Show();
@@ -84,23 +75,23 @@ namespace Client
     }
 
     public class Volume_Info
-        {
-            public string? Title;
-            public List<string>? Authors;
-            public string? Publisher;
-            public string? Description;
-            public string? PublishedDate;
-        }
+    {
+        public string? Title;
+        public List<string>? Authors;
+        public string? Publisher;
+        public string? Description;
+        public string? PublishedDate;
+    }
 
-        public class Volume
-        {
-            public string? Id;
-            public Volume_Info? VolumeInfo;
-        }
+    public class Volume
+    {
+        public string? Id;
+        public Volume_Info? VolumeInfo;
+    }
 
-        public class VolumesResponse
-        {
-            public string? Kind;
-            public List<Volume>? Items;
-        }
+    public class VolumesResponse
+    {
+        public string? Kind;
+        public List<Volume>? Items;
+    }
 }

@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Data;
+﻿using System.Data;
+using Newtonsoft.Json;
 
 namespace Client
 {
@@ -71,20 +70,15 @@ namespace Client
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private static async Task GetBookDetails(string volumeId)
-        {
-            BookInfo bookInfo = new BookInfo(volumeId);
-            bookInfo.Show();
-        }
-
-        private async void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 string? volumeId = dgvBooks.Rows[e.RowIndex].Cells["volumeId"].Value?.ToString();
                 if (!string.IsNullOrEmpty(volumeId))
                 {
-                    await GetBookDetails(volumeId);
+                    BookInfo bookInfo = new BookInfo(volumeId);
+                    bookInfo.Show();
                 }
                 else
                 {
@@ -106,7 +100,7 @@ namespace Client
     }
     public class Items
     {
-        public string? id;            // Thêm field id cho Item
+        public string? id;
         public VolumeInfo? volumeInfo;
     }
     public class VolumeInfo
