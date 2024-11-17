@@ -34,16 +34,15 @@
             VolCnt = new ColumnHeader();
             btnList = new Button();
             btnDel = new Button();
-            btnClr = new Button();
             SuspendLayout();
             // 
             // listBS
             // 
             listBS.Columns.AddRange(new ColumnHeader[] { Id, Title, VolCnt });
             listBS.GridLines = true;
-            listBS.Location = new Point(12, 102);
+            listBS.Location = new Point(12, 47);
             listBS.Name = "listBS";
-            listBS.Size = new Size(776, 336);
+            listBS.Size = new Size(776, 391);
             listBS.TabIndex = 0;
             listBS.UseCompatibleStateImageBehavior = false;
             listBS.View = View.Details;
@@ -80,26 +79,15 @@
             btnDel.Name = "btnDel";
             btnDel.Size = new Size(168, 29);
             btnDel.TabIndex = 2;
-            btnDel.Text = "Delete bookshelf";
+            btnDel.Text = "Select Bookshelf";
             btnDel.UseVisualStyleBackColor = true;
             btnDel.Click += btnDel_Click;
-            // 
-            // btnClr
-            // 
-            btnClr.Location = new Point(358, 12);
-            btnClr.Name = "btnClr";
-            btnClr.Size = new Size(168, 29);
-            btnClr.TabIndex = 3;
-            btnClr.Text = "Clear all bookshelves";
-            btnClr.UseVisualStyleBackColor = true;
-            btnClr.Click += btnClr_Click;
             // 
             // Bookshelf
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnClr);
             Controls.Add(btnDel);
             Controls.Add(btnList);
             Controls.Add(listBS);
@@ -112,10 +100,9 @@
 
         private ListView listBS;
         private Button btnList;
-        private Button btnDel;
-        private Button btnClr;
         private ColumnHeader Id;
         private ColumnHeader Title;
         private ColumnHeader VolCnt;
+        private Button btnDel;
     }
 }

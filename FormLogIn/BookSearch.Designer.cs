@@ -93,8 +93,9 @@
             btnCreateShelf.Name = "btnCreateShelf";
             btnCreateShelf.Size = new Size(200, 34);
             btnCreateShelf.TabIndex = 4;
-            btnCreateShelf.Text = "Create new shelf";
+            btnCreateShelf.Text = "Bookshelf List";
             btnCreateShelf.UseVisualStyleBackColor = true;
+            btnCreateShelf.Click += btnCreateShelf_Click;
             // 
             // txtShelfTitle
             // 
@@ -176,6 +177,8 @@
             Controls.Add(txtSearch);
             Controls.Add(dgvBooks);
             Controls.Add(label1);
+            //Name = "BookSearch";
+            Text = "Book Search";
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -37,12 +37,12 @@ namespace Client
                             {
                                 volumeId = book.id,
                                 Title = book?.volumeInfo?.title,
-                                Authors = book?.volumeInfo?.authors != null ? 
+                                Authors = book?.volumeInfo?.authors != null ?
                                     string.Join(", ", book.volumeInfo.authors) : "Unknown",
                                 Description = book?.volumeInfo?.description,
                                 Thumbnail = book?.volumeInfo?.imageLinks?.thumbnail
                             }).ToList();
-                            
+
                             dgvBooks.DataSource = bookInfos;
 
                             if (!dgvBooks.Columns.Contains("volumeId"))
@@ -92,35 +92,41 @@ namespace Client
                 }
             }
         }
+
+        private void btnCreateShelf_Click(object sender, EventArgs e)
+        {
+            Bookshelf ins = new();
+            ins.Show();
+        }
     }
 
     public class BookList
     {
-        public List<Items>? items { get; set; }
+        public List<Items>? items;
     }
     public class Items
     {
-        public string? id { get; set; }            // Thêm field id cho Item
-        public VolumeInfo? volumeInfo { get; set; }
+        public string? id;            // Thêm field id cho Item
+        public VolumeInfo? volumeInfo;
     }
     public class VolumeInfo
     {
-        public string? title { get; set; }
+        public string? title;
 
-        public string? subtitle { get; set; }        // Phụ đề của sách
-        public List<string>? authors { get; set; }   // Danh sách tác giả
-        public string? publisher { get; set; }       // Nhà xuất bản
-        public string? publishedDate { get; set; }   // Ngày xuất bản
-        public string? description { get; set; }     // Mô tả về sách
+        public string? subtitle;            // Phụ đề của sách
+        public List<string>? authors;      // Danh sách tác giả
+        public string? publisher;       // Nhà xuất bản
+        public string? publishedDate;   // Ngày xuất bản
+        public string? description;     // Mô tả về sách
         public int pageCount { get; set; }          // Số trang
-        public List<string>? categories { get; set; } // Danh mục của sách
-        public string? language { get; set; }        // Ngôn ngữ
-        public ImageLinks? imageLinks { get; set; }   // Liên kết ảnh
+        public List<string>? categories; // Danh mục của sách
+        public string? language;        // Ngôn ngữ
+        public ImageLinks? imageLinks;   // Liên kết ảnh
     }
     public class ImageLinks
     {
-        public string? thumbnail { get; set; }       // URL ảnh bìa nhỏ
-        public string? smallThumbnail { get; set; }  // URL ảnh bìa nhỏ hơn (nếu có)
+        public string? thumbnail;       // URL ảnh bìa nhỏ
+        public string? smallThumbnail;  // URL ảnh bìa nhỏ hơn (nếu có)
     }
 
 }
