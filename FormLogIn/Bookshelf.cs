@@ -23,10 +23,10 @@ namespace Client
 
     public partial class Bookshelf : Form
     {
-        readonly static string apikey = "AIzaSyBejIyyckY2rxU9FmG9PDhK5p17y7FqO0g"; //Placeholder
-        //readonly static string auth = string.Empty; //Placeholder
-        readonly static string userId = "113405051969637466754"; //
-        readonly static string requestUrl = $"https://www.googleapis.com/books/v1/users/{userId}/bookshelves?key={apikey}";
+        readonly static string en_api = "QUl6YVN5QmVqSXl5Y2tZMnJ4VTlGbUc5UERoSzVwMTd5N0ZxTzBn"; //Placeholder
+        readonly static string userId = "113405051969637466754";
+        readonly static string api_key = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(en_api));
+        readonly static string requestUrl = $"https://www.googleapis.com/books/v1/users/{userId}/bookshelves?key={api_key}";
         public Bookshelf()
         {
             InitializeComponent();
@@ -84,53 +84,7 @@ namespace Client
 
         }
 
-        async Task GetBookshelfListOAuth()
-        {
-            string credPath = "cred.json";
-            string[] scope = { BooksService.Scope.Books };
-            try
-            {
-                UserCredential cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.FromFile(credPath).Secrets,
-                    scope,
-                    "auth_user",
-                    CancellationToken.None
-                );
-                MessageBox.Show("Connect Successful");
-                var booksService = new BooksService(new BaseClientService.Initializer
-                {
-                    HttpClientInitializer = cred,
-                    ApplicationName = "Book Show"
-                }
-                );
-                var bookshelvesRequest = booksService.Mylibrary.Bookshelves.List();
-                Bookshelves bookshelves = await bookshelvesRequest.ExecuteAsync();
-                if (bookshelves.Items != null && bookshelves.Items.Count > 0)
-                {
-                    //Console.WriteLine("User's Bookshelves:");
-                    foreach (var shelf in bookshelves.Items)
-                    {
-                        //MessageBox.Show($"- {shelf.Title} (ID: {shelf.Id}, Volumes: {shelf.VolumeCount})");
-
-                        string? id = Convert.ToString(shelf.Id);
-                        string? title = shelf.Title;
-                        string? volcnt = shelf.VolumeCount.ToString();
-                        string[] item = { id, title, volcnt };
-                        //TODO: Somehow suppress these warnings about NULL above this line
-                        ListViewItem ls = new ListViewItem(item);
-                        ListViewItem add = listBS.Items.Add(ls);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No bookshelves found.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"{ex.Message}, {ex.InnerException}");
-            }
-        }
+        
 
         private async void btnList_Click(object sender, EventArgs e)
         {

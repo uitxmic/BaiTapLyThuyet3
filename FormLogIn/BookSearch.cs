@@ -6,7 +6,8 @@ namespace Client
 {
     public partial class BookSearch : Form
     {
-        readonly static string APIKey = "AIzaSyBejIyyckY2rxU9FmG9PDhK5p17y7FqO0g";
+        readonly static string en_api = "QUl6YVN5QmVqSXl5Y2tZMnJ4VTlGbUc5UERoSzVwMTd5N0ZxTzBn";
+        readonly static string api_key = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(en_api));
 
         public BookSearch()
         {
@@ -20,7 +21,7 @@ namespace Client
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    string url = $"https://www.googleapis.com/books/v1/volumes?q={query}&key={APIKey}";
+                    string url = $"https://www.googleapis.com/books/v1/volumes?q={query}&key={api_key}";
 
                     HttpResponseMessage response = client.GetAsync(url).Result;
                     if (response.IsSuccessStatusCode)
@@ -35,11 +36,11 @@ namespace Client
                             var bookInfos = books.items.Select(book => new
                             {
                                 volumeId = book.id,
-                                Title = book.volumeInfo.title,
-                                Authors = book.volumeInfo.authors != null ? 
+                                Title = book?.volumeInfo?.title,
+                                Authors = book?.volumeInfo?.authors != null ? 
                                     string.Join(", ", book.volumeInfo.authors) : "Unknown",
-                                Description = book.volumeInfo.description,
-                                Thumbnail = book.volumeInfo.imageLinks?.thumbnail
+                                Description = book?.volumeInfo?.description,
+                                Thumbnail = book?.volumeInfo?.imageLinks?.thumbnail
                             }).ToList();
                             
                             dgvBooks.DataSource = bookInfos;
@@ -53,6 +54,7 @@ namespace Client
                             }
 
                             dgvBooks.Columns["volumeId"].Visible = false;
+                            dgvBooks.Columns["Description"].Width = 500;
                         }
                         else
                         {
@@ -69,7 +71,7 @@ namespace Client
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private async Task GetBookDetails(string volumeId)
+        private static async Task GetBookDetails(string volumeId)
         {
             BookInfo bookInfo = new BookInfo(volumeId);
             bookInfo.Show();
@@ -79,7 +81,7 @@ namespace Client
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                string volumeId = dgvBooks.Rows[e.RowIndex].Cells["volumeId"].Value?.ToString();
+                string? volumeId = dgvBooks.Rows[e.RowIndex].Cells["volumeId"].Value?.ToString();
                 if (!string.IsNullOrEmpty(volumeId))
                 {
                     await GetBookDetails(volumeId);
