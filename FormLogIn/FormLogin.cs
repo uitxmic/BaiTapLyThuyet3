@@ -1,9 +1,6 @@
-using System.Data;
-using System.Data.SqlClient;
 using System.Text;
-using System.Security.Cryptography;
 using System.Net.Sockets;
-using System.ComponentModel.DataAnnotations;
+using Client;
 
 namespace FormLogIn
 {
@@ -33,8 +30,9 @@ namespace FormLogIn
         {
             if (response.StartsWith("200"))
             {
-                FormUserInfo fui = new FormUserInfo(response);
-                fui.Show();
+                BookSearch bookSearch = new BookSearch();
+                bookSearch.Show();
+                this.Hide();
             }
             else MessageBox.Show(response);
         }

@@ -35,6 +35,7 @@ namespace FormLogIn
             button_Close = new Button();
             textBox_Birthday = new TextBox();
             textBox_Fullname = new TextBox();
+            btnList = new Button();
             SuspendLayout();
             // 
             // textBox_Username
@@ -91,12 +92,23 @@ namespace FormLogIn
             textBox_Fullname.Size = new Size(236, 20);
             textBox_Fullname.TabIndex = 8;
             // 
+            // btnList
+            // 
+            btnList.Location = new Point(865, 253);
+            btnList.Name = "btnList";
+            btnList.Size = new Size(171, 52);
+            btnList.TabIndex = 9;
+            btnList.Text = "List bookshelves";
+            btnList.UseVisualStyleBackColor = true;
+            btnList.Click += btnList_Click;
+            // 
             // FormUserInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1296, 660);
+            Controls.Add(btnList);
             Controls.Add(textBox_Fullname);
             Controls.Add(textBox_Birthday);
             Controls.Add(button_Close);
@@ -114,5 +126,6 @@ namespace FormLogIn
         private Button button_Close;
         private TextBox textBox_Birthday;
         private TextBox textBox_Fullname;
+        private Button btnList;
     }
 }

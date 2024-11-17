@@ -35,6 +35,12 @@ namespace FormLogIn
         {
             this.Close();
         }
+
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            Client.Bookshelf ins = new Client.Bookshelf();
+            ins.Show();
+        }
     }
 }
 
