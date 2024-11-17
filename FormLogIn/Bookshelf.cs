@@ -16,6 +16,7 @@ using Google.Apis.Services;
 using System.Net;
 using Google.Apis.Books.v1.Data;
 using Newtonsoft.Json;
+using System.Collections;
 //using System.Text.Json;
 
 namespace Client
@@ -48,8 +49,6 @@ namespace Client
                     string responseData = await response.Content.ReadAsStringAsync();
                     if (responseData != null)
                     {
-                        MessageBox.Show(responseData);
-
                         var items = JsonConvert.DeserializeObject<Response>(responseData);
                         if (items == null)
                         {
@@ -84,17 +83,32 @@ namespace Client
 
         }
 
-        
+
 
         private async void btnList_Click(object sender, EventArgs e)
         {
             //await GetBookshelfList();
             await GetBookshelfList();
         }
-
+        static int shelfID;
+        static string? selection;
         private void btnDel_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+            listBS.Select();
+            try
+            {
+                if (int.TryParse(selection, out shelfID) == true)
+                {
+                    ListBook ins = new ListBook(shelfID);
+                    ins.Show();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void btnClr_Click(object sender, EventArgs e)
@@ -104,8 +118,23 @@ namespace Client
 
         private void listBS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedItemText = (listBS.SelectedItems.ToString() ?? "(none)").ToString();
-            MessageBox.Show("Selected: " + selectedItemText);
+
+
+        }
+
+        private void listBS_Click(object sender, EventArgs e)
+        {
+            if (listBS.SelectedItems.Count >= 1)
+            {
+                ListViewItem item = listBS.SelectedItems[0];
+                selection = item.Text;                
+            }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

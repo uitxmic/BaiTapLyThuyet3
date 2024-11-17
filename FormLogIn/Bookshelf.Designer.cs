@@ -34,6 +34,7 @@
             VolCnt = new ColumnHeader();
             btnList = new Button();
             btnDel = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // listBS
@@ -47,6 +48,7 @@
             listBS.UseCompatibleStateImageBehavior = false;
             listBS.View = View.Details;
             listBS.SelectedIndexChanged += listBS_SelectedIndexChanged;
+            listBS.Click += listBS_Click;
             // 
             // Id
             // 
@@ -83,17 +85,29 @@
             btnDel.UseVisualStyleBackColor = true;
             btnDel.Click += btnDel_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(358, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(368, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Please click on an ID to view the bookshelf's volume(s)";
+            label1.Click += label1_Click;
+            // 
             // Bookshelf
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(btnDel);
             Controls.Add(btnList);
             Controls.Add(listBS);
             Name = "Bookshelf";
             Text = "Bookshelf";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -104,5 +118,6 @@
         private ColumnHeader Title;
         private ColumnHeader VolCnt;
         private Button btnDel;
+        private Label label1;
     }
 }
