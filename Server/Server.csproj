@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="zTest.cs" />
     <EmbeddedResource Include="FormSever.resx">
       <DependentUpon>FormSever.cs</DependentUpon>
     </EmbeddedResource>

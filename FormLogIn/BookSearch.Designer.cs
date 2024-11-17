@@ -37,6 +37,10 @@
             txtShelfDescription = new TextBox();
             progressBar1 = new ProgressBar();
             lvShelf = new ListView();
+            Name = new DataGridViewTextBoxColumn();
+            Author = new DataGridViewTextBoxColumn();
+            clTitle = new DataGridViewTextBoxColumn();
+            clAuthor = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
@@ -55,11 +59,12 @@
             // dgvBooks
             // 
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBooks.Location = new Point(231, 90);
+            dgvBooks.Location = new Point(218, 90);
             dgvBooks.Name = "dgvBooks";
             dgvBooks.RowHeadersWidth = 51;
-            dgvBooks.Size = new Size(739, 351);
+            dgvBooks.Size = new Size(752, 351);
             dgvBooks.TabIndex = 1;
+            dgvBooks.CellContentClick += dgvBooks_CellContentClick;
             // 
             // txtSearch
             // 
@@ -125,6 +130,38 @@
             lvShelf.TabIndex = 8;
             lvShelf.UseCompatibleStateImageBehavior = false;
             // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.ReadOnly = true;
+            Name.Resizable = DataGridViewTriState.False;
+            Name.Width = 350;
+            // 
+            // Author
+            // 
+            Author.HeaderText = "Author";
+            Author.MinimumWidth = 6;
+            Author.Name = "Author";
+            Author.ReadOnly = true;
+            Author.Resizable = DataGridViewTriState.False;
+            Author.Width = 349;
+            // 
+            // clTitle
+            // 
+            clTitle.HeaderText = "Tile";
+            clTitle.MinimumWidth = 6;
+            clTitle.Name = "clTitle";
+            clTitle.Width = 349;
+            // 
+            // clAuthor
+            // 
+            clAuthor.HeaderText = "Author";
+            clAuthor.MinimumWidth = 6;
+            clAuthor.Name = "clAuthor";
+            clAuthor.Width = 349;
+            // 
             // BookSearch
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -139,8 +176,6 @@
             Controls.Add(txtSearch);
             Controls.Add(dgvBooks);
             Controls.Add(label1);
-            Name = "BookSearch";
-            Text = "BookSearch";
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -157,5 +192,9 @@
         private TextBox txtShelfDescription;
         private ProgressBar progressBar1;
         private ListView lvShelf;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Author;
+        private DataGridViewTextBoxColumn clTitle;
+        private DataGridViewTextBoxColumn clAuthor;
     }
 }

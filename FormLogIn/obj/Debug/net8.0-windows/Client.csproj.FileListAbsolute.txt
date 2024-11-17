@@ -153,3 +153,4 @@ C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windo
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windows\System.Management.dll
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
 C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.BookSearch.resources
+C:\Users\vobao\Documents\GitHub\BaiTapLyThuyet3\FormLogIn\obj\Debug\net8.0-windows\Client.BookInfo.resources
