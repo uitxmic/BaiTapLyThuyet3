@@ -8,6 +8,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
+using MimeKit;
 
 namespace Server
 {
@@ -50,29 +52,29 @@ namespace Server
                 return sb.ToString();
             }
         }
-        private void HandleClient(TcpClient client)
-        { 
+        private async void HandleClient(TcpClient client)
+        {
             NetworkStream stream = client.GetStream();
             byte[] buffer = new byte[4096];
             int byteCount;
             try
-            { 
-                while ((byteCount = stream.Read(buffer, 0, buffer.Length)) != 0)
+            {
+                while ((byteCount = await stream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                 {
                     string request = Encoding.Unicode.GetString(buffer, 0, byteCount);
-                    string response = HandleRequest(request);
+                    string response = await HandleRequestAsync(request);
                     byte[] responseData = Encoding.Unicode.GetBytes(response);
-                    stream.Write(responseData, 0, responseData.Length);
+                    await stream.WriteAsync(responseData, 0, responseData.Length);
                 }
                 clients.Remove(client);
                 client.Close();
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private bool IsUserNameExists(string userName)
         {
             try
@@ -91,7 +93,7 @@ namespace Server
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return false; }
         }
-        private string HandleRequest(string request)
+        private async Task<string> HandleRequestAsync(string request)
         {
             if (request.StartsWith("LOGIN"))
             {
@@ -110,16 +112,143 @@ namespace Server
                 string[] parts = request.Split(';');
                 if (parts.Length != 6) return "Invalid login request";
                 string usr = parts[1];
-                               
+
                 if (IsUserNameExists(usr)) return "Username already exists.";
                 return SignupQuery(parts);
             }
+            if (request.StartsWith("RESETPASSWORD"))
+            {
+                string email = request.Split(';')[1];
+                if (IsEmailExists(email))
+                {
+                    string newPassword = GenerateRandomPassword();
+                    if (UpdatePasswordInDatabaseByEmail(email, newPassword))
+                    {
+                        if (await SendEmailAsync(email, newPassword))
+                        {
+                            return "Password reset and email sent successfully.";
+                        }
+                        else
+                        {
+                            return "Failed to send email.";
+                        }
+                    }
+                    else
+                    {
+                        return "Failed to update password in database.";
+                    }
+                }
+                else
+                {
+                    return "Email does not exist in database.";
+                }
+            }
 
             return "Unknown request";
-           
         }
-        
-        string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
+
+        private bool IsEmailExists(string email)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    string checkQuery = "SELECT COUNT(1) FROM USERS WHERE Email = @Email";
+                    using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("Email", email);
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private string GenerateRandomPassword(int length = 8)
+        {
+            const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder sb = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                sb.Append(validChars[rnd.Next(validChars.Length)]);
+            }
+            return sb.ToString();
+        }
+
+        private bool UpdatePasswordInDatabaseByEmail(string email, string newPassword)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    string updateQuery = "UPDATE USERS SET PassWord = @Password WHERE Email = @Email";
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("Password", ComputeSha256Hash(newPassword));
+                        cmd.Parameters.AddWithValue("Email", email);
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+        private async Task<bool> SendEmailAsync(string email, string newPassword)
+            {
+                string senderEmail = "khoibaochien@gmail.com";
+                string senderPassword = "krti dtle hdjb exew";
+                string subject = "Reset Password";
+                string body = $"Your new password is: {newPassword}";
+
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Your Name", senderEmail));
+                message.To.Add(new MailboxAddress("", email));
+                message.Subject = subject;
+                message.Body = new TextPart("plain")
+                {
+                    Text = body
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    try
+                    {
+                        // Kết nối với máy chủ SMTP
+                        await client.ConnectAsync("smtp.gmail.com", 465, true);
+
+                        // Xác thực với máy chủ SMTP
+                        await client.AuthenticateAsync(senderEmail, senderPassword);
+
+                        // Gửi email
+                        await client.SendAsync(message);
+
+                        // Ngắt kết nối
+                        await client.DisconnectAsync(true);
+
+                        MessageBox.Show("Email sent successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Email Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+    string query = "INSERT INTO USERS (UserName, PassWord, Email, BirthDay, FullName) VALUES (@UserName, @PassWord, @Email, @Birthday, @FullName)";
         private string SignupQuery(string[] request)
         {
             try

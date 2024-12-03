@@ -36,7 +36,7 @@ namespace FormLogIn
             }
             else MessageBox.Show(response);
         }
-        
+
         private void button_Login_Click(object sender, EventArgs e)
         {
             string username = textBox_TenDangNhap.Text;
@@ -62,14 +62,10 @@ namespace FormLogIn
             FormSignUp formSignUp = new FormSignUp();
             formSignUp.ShowDialog();
         }
-        private void label_TieuDe_Click(object sender, EventArgs e)
+        private void btnForgetPass_Click(object sender, EventArgs e)
         {
-
+            FormForgetPassword formForgetPassword = new FormForgetPassword();
+            formForgetPassword.ShowDialog();
         }
-        private void label_TieuDe2_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

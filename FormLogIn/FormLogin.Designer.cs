@@ -37,6 +37,7 @@
             button_SignUp = new Button();
             label_TieuDe2 = new Label();
             label_TieuDe = new Label();
+            btnForgetPass = new Button();
             SuspendLayout();
             // 
             // textBox_TenDangNhap
@@ -112,7 +113,6 @@
             label_TieuDe2.Name = "label_TieuDe2";
             label_TieuDe2.Size = new Size(0, 20);
             label_TieuDe2.TabIndex = 1;
-            label_TieuDe2.Click += label_TieuDe2_Click;
             // 
             // label_TieuDe
             // 
@@ -122,7 +122,16 @@
             label_TieuDe.Name = "label_TieuDe";
             label_TieuDe.Size = new Size(0, 57);
             label_TieuDe.TabIndex = 0;
-            label_TieuDe.Click += label_TieuDe_Click;
+            // 
+            // btnForgetPass
+            // 
+            btnForgetPass.Location = new Point(541, 630);
+            btnForgetPass.Name = "btnForgetPass";
+            btnForgetPass.Size = new Size(199, 29);
+            btnForgetPass.TabIndex = 9;
+            btnForgetPass.Text = "Forget Password?";
+            btnForgetPass.UseVisualStyleBackColor = true;
+            btnForgetPass.Click += btnForgetPass_Click;
             // 
             // FormLogin
             // 
@@ -130,6 +139,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1312, 685);
+            Controls.Add(btnForgetPass);
             Controls.Add(button_SignUp);
             Controls.Add(checkBox_RevealPass);
             Controls.Add(button_Close);
@@ -154,5 +164,6 @@
         private Button button_SignUp;
         private Label label_TieuDe2;
         private Label label_TieuDe;
+        private Button btnForgetPass;
     }
 }
