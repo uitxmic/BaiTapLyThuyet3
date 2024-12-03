@@ -210,13 +210,78 @@ namespace Server
                 string senderEmail = "khoibaochien@gmail.com";
                 string senderPassword = "krti dtle hdjb exew";
                 string subject = "Reset Password";
-                string body = $"Your new password is: {newPassword}";
+                string body = $@"
+                <!DOCTYPE html>
+                <html lang=""en"">
+                <head>
+                    <meta charset=""UTF-8"">
+                    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                    <title>Reset Password</title>
+                    <style>
+                        body {{
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #f4f4f4;
+                        }}
+                        .container {{
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            background-color: #ffffff;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        }}
+                        .header {{
+                            text-align: center;
+                            padding: 10px 0;
+                            border-bottom: 1px solid #dddddd;
+                        }}
+                        .content {{
+                            padding: 20px 0;
+                        }}
+                        .footer {{
+                            text-align: center;
+                            padding: 10px 0;
+                            border-top: 1px solid #dddddd;
+                            font-size: 12px;
+                            color: #999999;
+                        }}
+                        .button {{
+                            display: inline-block;
+                            padding: 10px 20px;
+                            margin-top: 20px;
+                            background-color: #28a745;
+                            color: #ffffff;
+                            text-decoration: none;
+                            border-radius: 5px;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class=""container"">
+                        <div class=""header"">
+                            <h2>Password Reset</h2>
+                        </div>
+                        <div class=""content"">
+                            <p>Dear User,</p>
+                            <p>Your new password is:</p>
+                            <p><strong>{newPassword}</strong></p>
+                            <p>Please use this new password to log in with your username. We recommend changing your password once you have successfully logged in.</p>
+                        </div>
+                        <div class=""footer"">
+                            <p>If you did not request this password reset, please contact our support team immediately.</p>
+                            <p>Thank you,<br>Group 5</p>
+                        </div>
+                    </div>
+                </body>
+                </html>";
 
-                var message = new MimeMessage();
+            var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("Your Name", senderEmail));
                 message.To.Add(new MailboxAddress("", email));
                 message.Subject = subject;
-                message.Body = new TextPart("plain")
+                message.Body = new TextPart("html")
                 {
                     Text = body
                 };
