@@ -278,7 +278,7 @@ namespace Server
                 </html>";
 
             var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Your Name", senderEmail));
+                message.From.Add(new MailboxAddress("Reset Password From Group 5", senderEmail));
                 message.To.Add(new MailboxAddress("", email));
                 message.Subject = subject;
                 message.Body = new TextPart("html")
