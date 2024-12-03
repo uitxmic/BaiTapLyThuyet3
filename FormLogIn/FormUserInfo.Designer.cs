@@ -32,10 +32,12 @@ namespace FormLogIn
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserInfo));
             textBox_Username = new TextBox();
             textBox_Email = new TextBox();
-            button_Close = new Button();
             textBox_Birthday = new TextBox();
             textBox_Fullname = new TextBox();
             btnList = new Button();
+            btnChangePassword = new Button();
+            btnSignout = new Button();
+            btnBacktoBookSearch = new Button();
             SuspendLayout();
             // 
             // textBox_Username
@@ -59,16 +61,6 @@ namespace FormLogIn
             textBox_Email.ReadOnly = true;
             textBox_Email.Size = new Size(236, 20);
             textBox_Email.TabIndex = 3;
-            // 
-            // button_Close
-            // 
-            button_Close.Location = new Point(547, 577);
-            button_Close.Name = "button_Close";
-            button_Close.Size = new Size(171, 52);
-            button_Close.TabIndex = 6;
-            button_Close.Text = "Sign out";
-            button_Close.UseVisualStyleBackColor = true;
-            button_Close.Click += button_Close_Click;
             // 
             // textBox_Birthday
             // 
@@ -94,13 +86,43 @@ namespace FormLogIn
             // 
             // btnList
             // 
-            btnList.Location = new Point(865, 253);
+            btnList.Location = new Point(1148, 612);
             btnList.Name = "btnList";
-            btnList.Size = new Size(171, 52);
+            btnList.Size = new Size(136, 36);
             btnList.TabIndex = 9;
             btnList.Text = "List bookshelves";
             btnList.UseVisualStyleBackColor = true;
             btnList.Click += btnList_Click;
+            // 
+            // btnChangePassword
+            // 
+            btnChangePassword.Location = new Point(1000, 612);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(142, 36);
+            btnChangePassword.TabIndex = 10;
+            btnChangePassword.Text = "ChangePassword";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
+            // 
+            // btnSignout
+            // 
+            btnSignout.Location = new Point(601, 588);
+            btnSignout.Name = "btnSignout";
+            btnSignout.Size = new Size(84, 29);
+            btnSignout.TabIndex = 11;
+            btnSignout.Text = "Sign Out";
+            btnSignout.UseVisualStyleBackColor = true;
+            btnSignout.Click += btnSignout_Click_1;
+            // 
+            // btnBacktoBookSearch
+            // 
+            btnBacktoBookSearch.Location = new Point(12, 619);
+            btnBacktoBookSearch.Name = "btnBacktoBookSearch";
+            btnBacktoBookSearch.Size = new Size(94, 29);
+            btnBacktoBookSearch.TabIndex = 12;
+            btnBacktoBookSearch.Text = "Back";
+            btnBacktoBookSearch.UseVisualStyleBackColor = true;
+            btnBacktoBookSearch.Click += btnBacktoBookSearch_Click;
             // 
             // FormUserInfo
             // 
@@ -108,10 +130,12 @@ namespace FormLogIn
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1296, 660);
+            Controls.Add(btnBacktoBookSearch);
+            Controls.Add(btnSignout);
+            Controls.Add(btnChangePassword);
             Controls.Add(btnList);
             Controls.Add(textBox_Fullname);
             Controls.Add(textBox_Birthday);
-            Controls.Add(button_Close);
             Controls.Add(textBox_Email);
             Controls.Add(textBox_Username);
             Name = "FormUserInfo";
@@ -123,9 +147,11 @@ namespace FormLogIn
         #endregion
         private TextBox textBox_Username;
         private TextBox textBox_Email;
-        private Button button_Close;
         private TextBox textBox_Birthday;
         private TextBox textBox_Fullname;
         private Button btnList;
+        private Button btnChangePassword;
+        private Button btnSignout;
+        private Button btnBacktoBookSearch;
     }
 }

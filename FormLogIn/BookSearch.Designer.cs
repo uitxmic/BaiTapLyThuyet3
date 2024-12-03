@@ -38,6 +38,7 @@
             Author = new DataGridViewTextBoxColumn();
             clTitle = new DataGridViewTextBoxColumn();
             clAuthor = new DataGridViewTextBoxColumn();
+            btnSetting = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             dgvBooks.Location = new Point(12, 90);
             dgvBooks.Name = "dgvBooks";
             dgvBooks.RowHeadersWidth = 51;
-            dgvBooks.Size = new Size(958, 351);
+            dgvBooks.Size = new Size(1033, 351);
             dgvBooks.TabIndex = 1;
             dgvBooks.CellContentClick += dgvBooks_CellContentClick;
             // 
@@ -98,7 +99,7 @@
             // 
             progressBar1.Location = new Point(657, 45);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(313, 39);
+            progressBar1.Size = new Size(388, 39);
             progressBar1.TabIndex = 7;
             // 
             // Name
@@ -133,18 +134,28 @@
             clAuthor.Name = "clAuthor";
             clAuthor.Width = 349;
             // 
+            // btnSetting
+            // 
+            btnSetting.Location = new Point(976, 10);
+            btnSetting.Name = "btnSetting";
+            btnSetting.Size = new Size(69, 29);
+            btnSetting.TabIndex = 8;
+            btnSetting.Text = "Cài đặt";
+            btnSetting.UseVisualStyleBackColor = true;
+            btnSetting.Click += btnSetting_Click;
+            // 
             // BookSearch
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 453);
+            ClientSize = new Size(1057, 453);
+            Controls.Add(btnSetting);
             Controls.Add(progressBar1);
             Controls.Add(btnShowShelf);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(dgvBooks);
             Controls.Add(label1);
-            //Name = "BookSearch";
             Text = "Book Search";
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);
@@ -163,5 +174,6 @@
         private DataGridViewTextBoxColumn Author;
         private DataGridViewTextBoxColumn clTitle;
         private DataGridViewTextBoxColumn clAuthor;
+        private Button btnSetting;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using FormLogIn;
 using Newtonsoft.Json;
 
 namespace Client
@@ -8,9 +9,12 @@ namespace Client
         readonly static string en_api = "QUl6YVN5QmVqSXl5Y2tZMnJ4VTlGbUc5UERoSzVwMTd5N0ZxTzBn";
         readonly static string api_key = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(en_api));
 
-        public BookSearch()
+        private string userResponse;
+
+        public BookSearch(string response)
         {
             InitializeComponent();
+            userResponse = response;
         }
 
         private async void btnSearch_Click(object sender, EventArgs e)
@@ -91,6 +95,13 @@ namespace Client
         {
             Bookshelf ins = new();
             ins.Show();
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            FormUserInfo formUserInfo = new FormUserInfo(userResponse);
+            formUserInfo.ShowDialog();
+            this.Hide();
         }
     }
 

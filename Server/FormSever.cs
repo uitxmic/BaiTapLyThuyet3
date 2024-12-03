@@ -143,6 +143,33 @@ namespace Server
                     return "Email does not exist in database.";
                 }
             }
+            if (request.StartsWith("CHANGEPASSWORD"))
+            {
+                string[] parts = request.Split(';');
+                if (parts.Length != 4)
+                {
+                    return "Invalid change password request.";
+                }
+
+                string email = parts[1];
+                string oldPasswordHash = ComputeSha256Hash(parts[2]);
+
+                if (ValidateCurrentPassword(email, oldPasswordHash))
+                {
+                    if (UpdatePasswordInDatabaseByEmail(email, parts[3]))
+                    {
+                        return "Success: Password changed successfully.";
+                    }
+                    else
+                    {
+                        return "Failed: Could not update password in database.";
+                    }
+                }
+                else
+                {
+                    return "Failed: Incorrect current password.";
+                }
+            }
 
             return "Unknown request";
         }
@@ -157,6 +184,30 @@ namespace Server
                     using (SqlCommand cmd = new SqlCommand(checkQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("Email", email);
+                        conn.Open();
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool ValidateCurrentPassword(string email, string passwordHash)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectString))
+                {
+                    string query = "SELECT COUNT(1) FROM USERS WHERE Email = @Email AND PassWord = @Password";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("Email", email);
+                        cmd.Parameters.AddWithValue("Password", passwordHash);
                         conn.Open();
                         int count = (int)cmd.ExecuteScalar();
                         return count > 0;

@@ -30,11 +30,14 @@ namespace FormLogIn
         {
             if (response.StartsWith("200"))
             {
-                BookSearch bookSearch = new BookSearch();
+                BookSearch bookSearch = new BookSearch(response);
                 bookSearch.Show();
                 this.Hide();
             }
-            else MessageBox.Show(response);
+            else
+            {
+                MessageBox.Show(response);
+            }
         }
 
         private void button_Login_Click(object sender, EventArgs e)
