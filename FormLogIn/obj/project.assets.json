@@ -6854,23 +6854,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chien\\.nuget\\packages\\": {},
+    "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\NT106-P13-1\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "projectUniqueName": "D:\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "D:\\NT106-P13-1\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
-      "packagesPath": "C:\\Users\\chien\\.nuget\\packages\\",
-      "outputPath": "D:\\NT106-P13-1\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
+      "projectPath": "D:\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "packagesPath": "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\",
+      "outputPath": "D:\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\chien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Khoi Nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6879,6 +6879,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
