@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HXUFWAsS95M=",
+  "dgSpecHash": "tUVj82wfVbo=",
   "success": true,
-  "projectFilePath": "D:\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+  "projectFilePath": "D:\\Code GitHub\\BaiTapLyThuyetChuong5\\FormLogIn\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\devart.data\\6.0.21\\devart.data.6.0.21.nupkg.sha512",

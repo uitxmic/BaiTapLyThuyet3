@@ -6860,11 +6860,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "projectUniqueName": "D:\\Code GitHub\\BaiTapLyThuyetChuong5\\FormLogIn\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "D:\\BaiTapLyThuyet3\\FormLogIn\\Client.csproj",
+      "projectPath": "D:\\Code GitHub\\BaiTapLyThuyetChuong5\\FormLogIn\\Client.csproj",
       "packagesPath": "C:\\Users\\Khoi Nguyen\\.nuget\\packages\\",
-      "outputPath": "D:\\BaiTapLyThuyet3\\FormLogIn\\obj\\",
+      "outputPath": "D:\\Code GitHub\\BaiTapLyThuyetChuong5\\FormLogIn\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
